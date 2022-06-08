@@ -1,0 +1,16 @@
+{
+    "onboarding_heading_text": "Добро пожаловать",
+    "onboarding_text": "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Proin et",
+    "catalog_appbar_title": "Каталог товаров",
+    "categories_title": "Категории",
+    "category_no_name": "Без названия",
+    "item_no_category": "Без категории",
+    "items_count": "Всего",
+    "no_items_available": "В данной категории пока нет товаров",
+    "no_image_available": "Нет картинки",
+    "item_tile_more": "Подробнее",
+    "cart_appbar_title": "Корзина",
+    "default_error_text": "Произошла непредвиденная ошибка.\nПожалуйста, попробуйте снова",
+    "refresh_button_text": "Обновить",
+    "next_button_text": "Далее"
+}

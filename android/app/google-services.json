@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "354956138775",
+    "project_id": "test-project-d038e",
+    "storage_bucket": "test-project-d038e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354956138775:android:17e7d45ab2c1c45e743f52",
+        "android_client_info": {
+          "package_name": "dev.des1yny.farm_market_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354956138775-f9qp0ord8dcn4uih6eb2lgeg7v4ism25.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkkj6g-5pDZjYC6xJwECyM-dn2-4G56TM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354956138775-f9qp0ord8dcn4uih6eb2lgeg7v4ism25.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
