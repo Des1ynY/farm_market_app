@@ -34,7 +34,7 @@ class CatalogScreen extends StatelessWidget {
                 CatalogAppBar(),
                 Expanded(
                   child: Padding(
-                    padding: kPageSmallPadding,
+                    padding: kPageDefaultPadding,
                     child: CatalogItemsListView(),
                   ),
                 ),

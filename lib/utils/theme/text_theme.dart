@@ -39,13 +39,24 @@ extension AppTextTheme on TextTheme {
     );
   }
 
-  TextStyle get itemTileCategory {
+  TextStyle get itemTitleStyle {
+    return _defaultTextStyle.copyWith(
+      fontSize: 20,
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  TextStyle get itemUnselectedPriceTileStyle {
     return const TextStyle(
       fontFamily: _manropeFamily,
-      fontSize: 11,
-      fontWeight: FontWeight.w500,
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
       color: ColorsTheme.textPassiveColor,
     );
+  }
+
+  TextStyle get itemSelectedPriceTileStyle {
+    return itemUnselectedPriceTileStyle.copyWith(color: Colors.white);
   }
 
   TextStyle get buttonTextStyle {
@@ -57,7 +68,7 @@ extension AppTextTheme on TextTheme {
     );
   }
 
-  TextStyle get categoryButtonTextStyle {
+  TextStyle get categoryTextStyle {
     return const TextStyle(
       fontFamily: _manropeFamily,
       fontSize: 16,

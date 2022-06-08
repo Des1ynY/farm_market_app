@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:farm_market_app/data/implementations/firebase_database.dart';
 import 'package:farm_market_app/screens/catalog/blocs/item_tile_bloc/item_tile_bloc.dart';
-import 'package:farm_market_app/screens/catalog/widgets/items_list/item_tile_category_row.dart';
+import 'package:farm_market_app/shared/widgets/item_category_row.dart';
 import 'package:farm_market_app/shared/models/category_model.dart';
 import 'package:farm_market_app/shared/models/item_model.dart';
 import 'package:farm_market_app/utils/l10n/generated/l10n.dart';
@@ -11,12 +11,25 @@ import 'package:farm_market_app/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ItemTile extends StatelessWidget {
+class ItemTile extends StatefulWidget {
   const ItemTile({required this.item, this.selectedCategory, Key? key})
       : super(key: key);
 
   final ItemModel item;
   final CategoryModel? selectedCategory;
+
+  @override
+  State<ItemTile> createState() => _ItemTileState();
+}
+
+class _ItemTileState extends State<ItemTile> {
+  late CategoryModel? _itemCategory;
+
+  @override
+  void initState() {
+    super.initState();
+    _itemCategory = widget.selectedCategory;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +53,7 @@ class ItemTile extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(9),
               child: CachedNetworkImage(
-                imageUrl: item.images?.first ?? '',
+                imageUrl: widget.item.images?.first ?? '',
                 height: 115,
                 fit: BoxFit.fitWidth,
                 errorWidget: (context, error, object) {
@@ -51,30 +64,36 @@ class ItemTile extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 5),
-            if (item.name != null)
+            if (widget.item.name != null)
               Text(
-                item.name!,
+                widget.item.name!,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 3,
                 style: textTheme.catalogCategoryStyle,
               ),
-            selectedCategory == null
-                ? BlocProvider(
+            _itemCategory != null
+                ? CategoryRow(category: _itemCategory)
+                : BlocProvider(
                     create: (context) => ItemTileBloc(
                       database: FirebaseDatabase(),
-                    )..add(ItemTileEvent.started(item)),
-                    child: BlocBuilder<ItemTileBloc, ItemTileState>(
+                    )..add(ItemTileEvent.started(widget.item)),
+                    child: BlocConsumer<ItemTileBloc, ItemTileState>(
+                      listener: (context, state) {
+                        state.maybeWhen(
+                          orElse: () => null,
+                          loaded: (category) =>
+                              setState(() => _itemCategory = category),
+                        );
+                      },
                       builder: (context, state) {
                         return state.maybeWhen(
                           orElse: () => const SizedBox(height: 20),
-                          loaded: (category) =>
-                              CategoryRow(selectedCategory: category),
+                          loaded: (category) => CategoryRow(category: category),
                         );
                       },
                     ),
-                  )
-                : CategoryRow(selectedCategory: selectedCategory),
+                  ),
             Container(
               height: 25,
               width: 80,
@@ -96,6 +115,9 @@ class ItemTile extends StatelessWidget {
   }
 
   void _onPressed(BuildContext context) {
-    context.router.push(ItemOverviewRoute(item: item));
+    context.router.push(ItemOverviewRoute(
+      item: widget.item,
+      itemCategory: _itemCategory,
+    ));
   }
 }

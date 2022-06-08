@@ -19,7 +19,10 @@ class OnboardingScreen extends StatelessWidget {
       body: BackgroundGradient(
         child: SafeArea(
           child: Padding(
-            padding: kPaddingDefault,
+            padding: const EdgeInsets.symmetric(
+              vertical: 40,
+              horizontal: 20,
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

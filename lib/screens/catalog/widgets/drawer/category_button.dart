@@ -34,8 +34,8 @@ class CategoryButton extends StatelessWidget {
               ),
             SizedBox(width: hasIcon ? 20 : 40),
             Text(
-              category.name ?? S.of(context).category_no_name,
-              style: Theme.of(context).textTheme.categoryButtonTextStyle,
+              category.name ?? S.of(context).no_name,
+              style: Theme.of(context).textTheme.categoryTextStyle,
             ),
           ],
         ),

@@ -26,19 +26,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "catalog_appbar_title":
             MessageLookupByLibrary.simpleMessage("Каталог товаров"),
         "categories_title": MessageLookupByLibrary.simpleMessage("Категории"),
-        "category_no_name":
-            MessageLookupByLibrary.simpleMessage("Без названия"),
         "default_error_text": MessageLookupByLibrary.simpleMessage(
             "Произошла непредвиденная ошибка.\nПожалуйста, попробуйте снова"),
-        "item_no_category":
-            MessageLookupByLibrary.simpleMessage("Без категории"),
+        "image_error_text": MessageLookupByLibrary.simpleMessage(
+            "Не удалось загрузить картинку"),
+        "item_composition": MessageLookupByLibrary.simpleMessage("Состав"),
+        "item_description": MessageLookupByLibrary.simpleMessage("Описание"),
+        "item_select_price":
+            MessageLookupByLibrary.simpleMessage("Выбрать фасовку"),
         "item_tile_more": MessageLookupByLibrary.simpleMessage("Подробнее"),
         "items_count": MessageLookupByLibrary.simpleMessage("Всего"),
         "next_button_text": MessageLookupByLibrary.simpleMessage("Далее"),
+        "no_category": MessageLookupByLibrary.simpleMessage("Без категории"),
         "no_image_available":
             MessageLookupByLibrary.simpleMessage("Нет картинки"),
         "no_items_available": MessageLookupByLibrary.simpleMessage(
             "В данной категории пока нет товаров"),
+        "no_name": MessageLookupByLibrary.simpleMessage("Без названия"),
         "onboarding_heading_text":
             MessageLookupByLibrary.simpleMessage("Добро пожаловать"),
         "onboarding_text": MessageLookupByLibrary.simpleMessage(

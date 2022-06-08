@@ -26,14 +26,14 @@ class CatalogDrawer extends StatelessWidget {
                     return state.maybeWhen(
                       orElse: () => LoadingIndicator(),
                       error: () => Padding(
-                        padding: kPageSmallPadding,
+                        padding: kPageDefaultPadding,
                         child: CustomErrorWidget(
                           onRefreshButtonPressed: () => _onRefresh(context),
                         ),
                       ),
                       loaded: (categories) {
                         return SingleChildScrollView(
-                          padding: kPageSmallPadding,
+                          padding: kPageDefaultPadding,
                           child: Column(
                             children: categories
                                 .map((e) => CategoryButton(category: e))

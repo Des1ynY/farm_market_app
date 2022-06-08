@@ -6,11 +6,17 @@ import 'package:flutter/material.dart';
 
 class CategoryRow extends StatelessWidget {
   const CategoryRow({
-    required this.selectedCategory,
+    required this.category,
+    double? fontSize,
+    double? iconSize,
     Key? key,
-  }) : super(key: key);
+  })  : _fontSize = fontSize ?? 11,
+        _iconSize = iconSize ?? 15,
+        super(key: key);
 
-  final CategoryModel? selectedCategory;
+  final CategoryModel? category;
+  final double? _fontSize;
+  final double? _iconSize;
 
   @override
   Widget build(BuildContext context) {
@@ -18,19 +24,23 @@ class CategoryRow extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8, top: 2),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          if (selectedCategory?.icon != null)
+          if (category?.icon != null)
             Padding(
               padding: const EdgeInsets.only(right: 5),
               child: CachedNetworkImage(
-                imageUrl: selectedCategory!.icon!,
-                width: 15,
-                height: 15,
+                imageUrl: category!.icon!,
+                width: _iconSize,
+                height: _iconSize,
               ),
             ),
           Text(
-            selectedCategory?.name ?? S.of(context).item_no_category,
-            style: Theme.of(context).textTheme.itemTileCategory,
+            category?.name ?? S.of(context).no_category,
+            style: Theme.of(context)
+                .textTheme
+                .categoryTextStyle
+                .copyWith(fontSize: _fontSize),
           ),
         ],
       ),

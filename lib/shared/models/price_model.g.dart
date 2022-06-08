@@ -8,9 +8,9 @@ part of 'price_model.dart';
 
 _$_PriceModel _$$_PriceModelFromJson(Map<String, dynamic> json) =>
     _$_PriceModel(
-      (json['capacity'] as num?)?.toDouble(),
+      json['capacity'] as num?,
       json['capacity_type'] as String?,
-      (json['price'] as num?)?.toDouble(),
+      json['price'] as num?,
     );
 
 Map<String, dynamic> _$$_PriceModelToJson(_$_PriceModel instance) =>

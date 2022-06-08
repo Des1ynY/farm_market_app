@@ -45,7 +45,7 @@ class _CatalogItemsListViewState extends State<CatalogItemsListView> {
                   children: [
                     if (selectedCategory != null)
                       Text(
-                        selectedCategory.name ?? S.of(context).category_no_name,
+                        selectedCategory.name ?? S.of(context).no_name,
                         style: textTheme.catalogCategoryStyle,
                       ),
                     Container(
@@ -59,7 +59,10 @@ class _CatalogItemsListViewState extends State<CatalogItemsListView> {
                     const SizedBox(height: 20),
                     items.isEmpty
                         ? Padding(
-                            padding: kPaddingDefault,
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 40,
+                              horizontal: 20,
+                            ),
                             child: Text(S.of(context).no_items_available),
                           )
                         : Wrap(

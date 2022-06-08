@@ -20,10 +20,10 @@ PriceModel _$PriceModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PriceModel {
-  double? get capacity => throw _privateConstructorUsedError;
+  num? get capacity => throw _privateConstructorUsedError;
   @JsonKey(name: 'capacity_type')
   String? get capacityType => throw _privateConstructorUsedError;
-  double? get price => throw _privateConstructorUsedError;
+  num? get price => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,9 +37,9 @@ abstract class $PriceModelCopyWith<$Res> {
           PriceModel value, $Res Function(PriceModel) then) =
       _$PriceModelCopyWithImpl<$Res>;
   $Res call(
-      {double? capacity,
+      {num? capacity,
       @JsonKey(name: 'capacity_type') String? capacityType,
-      double? price});
+      num? price});
 }
 
 /// @nodoc
@@ -60,7 +60,7 @@ class _$PriceModelCopyWithImpl<$Res> implements $PriceModelCopyWith<$Res> {
       capacity: capacity == freezed
           ? _value.capacity
           : capacity // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as num?,
       capacityType: capacityType == freezed
           ? _value.capacityType
           : capacityType // ignore: cast_nullable_to_non_nullable
@@ -68,7 +68,7 @@ class _$PriceModelCopyWithImpl<$Res> implements $PriceModelCopyWith<$Res> {
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as num?,
     ));
   }
 }
@@ -81,9 +81,9 @@ abstract class _$$_PriceModelCopyWith<$Res>
       __$$_PriceModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {double? capacity,
+      {num? capacity,
       @JsonKey(name: 'capacity_type') String? capacityType,
-      double? price});
+      num? price});
 }
 
 /// @nodoc
@@ -106,7 +106,7 @@ class __$$_PriceModelCopyWithImpl<$Res> extends _$PriceModelCopyWithImpl<$Res>
       capacity == freezed
           ? _value.capacity
           : capacity // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as num?,
       capacityType == freezed
           ? _value.capacityType
           : capacityType // ignore: cast_nullable_to_non_nullable
@@ -114,7 +114,7 @@ class __$$_PriceModelCopyWithImpl<$Res> extends _$PriceModelCopyWithImpl<$Res>
       price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as num?,
     ));
   }
 }
@@ -129,12 +129,12 @@ class _$_PriceModel implements _PriceModel {
       _$$_PriceModelFromJson(json);
 
   @override
-  final double? capacity;
+  final num? capacity;
   @override
   @JsonKey(name: 'capacity_type')
   final String? capacityType;
   @override
-  final double? price;
+  final num? price;
 
   @override
   String toString() {
@@ -173,20 +173,20 @@ class _$_PriceModel implements _PriceModel {
 
 abstract class _PriceModel implements PriceModel {
   const factory _PriceModel(
-      final double? capacity,
+      final num? capacity,
       @JsonKey(name: 'capacity_type') final String? capacityType,
-      final double? price) = _$_PriceModel;
+      final num? price) = _$_PriceModel;
 
   factory _PriceModel.fromJson(Map<String, dynamic> json) =
       _$_PriceModel.fromJson;
 
   @override
-  double? get capacity => throw _privateConstructorUsedError;
+  num? get capacity => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'capacity_type')
   String? get capacityType => throw _privateConstructorUsedError;
   @override
-  double? get price => throw _privateConstructorUsedError;
+  num? get price => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_PriceModelCopyWith<_$_PriceModel> get copyWith =>

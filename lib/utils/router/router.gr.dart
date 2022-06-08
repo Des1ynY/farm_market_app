@@ -37,7 +37,8 @@ class _$AppRouter extends RootStackRouter {
       final args = routeData.argsAs<ItemOverviewRouteArgs>();
       return MaterialPageX<dynamic>(
           routeData: routeData,
-          child: ItemOverviewScreen(item: args.item, key: args.key));
+          child: ItemOverviewScreen(
+              item: args.item, itemCategory: args.itemCategory, key: args.key));
     }
   };
 
@@ -96,22 +97,28 @@ class CartRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [ItemOverviewScreen]
 class ItemOverviewRoute extends PageRouteInfo<ItemOverviewRouteArgs> {
-  ItemOverviewRoute({required ItemModel item, Key? key})
+  ItemOverviewRoute(
+      {required ItemModel item, required CategoryModel? itemCategory, Key? key})
       : super(ItemOverviewRoute.name,
-            path: 'item', args: ItemOverviewRouteArgs(item: item, key: key));
+            path: 'item',
+            args: ItemOverviewRouteArgs(
+                item: item, itemCategory: itemCategory, key: key));
 
   static const String name = 'ItemOverviewRoute';
 }
 
 class ItemOverviewRouteArgs {
-  const ItemOverviewRouteArgs({required this.item, this.key});
+  const ItemOverviewRouteArgs(
+      {required this.item, required this.itemCategory, this.key});
 
   final ItemModel item;
+
+  final CategoryModel? itemCategory;
 
   final Key? key;
 
   @override
   String toString() {
-    return 'ItemOverviewRouteArgs{item: $item, key: $key}';
+    return 'ItemOverviewRouteArgs{item: $item, itemCategory: $itemCategory, key: $key}';
   }
 }

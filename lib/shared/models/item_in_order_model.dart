@@ -1,5 +1,4 @@
 // ignore_for_file: invalid_annotation_target
-import 'package:farm_market_app/shared/models/item_model.dart';
 import 'package:farm_market_app/shared/models/price_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

@@ -11,8 +11,8 @@ class CustomBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      height: kAppBarHeight,
-      minWidth: kAppBarHeight,
+      height: kBackButtonHeight,
+      minWidth: kBackButtonHeight,
       onPressed: () => _onPressed(context),
       color: ColorsTheme.textDefaultColor,
       elevation: _elevation,

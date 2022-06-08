@@ -91,20 +91,20 @@ class S {
   }
 
   /// `Без названия`
-  String get category_no_name {
+  String get no_name {
     return Intl.message(
       'Без названия',
-      name: 'category_no_name',
+      name: 'no_name',
       desc: '',
       args: [],
     );
   }
 
   /// `Без категории`
-  String get item_no_category {
+  String get no_category {
     return Intl.message(
       'Без категории',
-      name: 'item_no_category',
+      name: 'no_category',
       desc: '',
       args: [],
     );
@@ -150,6 +150,36 @@ class S {
     );
   }
 
+  /// `Состав`
+  String get item_composition {
+    return Intl.message(
+      'Состав',
+      name: 'item_composition',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Описание`
+  String get item_description {
+    return Intl.message(
+      'Описание',
+      name: 'item_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выбрать фасовку`
+  String get item_select_price {
+    return Intl.message(
+      'Выбрать фасовку',
+      name: 'item_select_price',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Корзина`
   String get cart_appbar_title {
     return Intl.message(
@@ -165,6 +195,16 @@ class S {
     return Intl.message(
       'Произошла непредвиденная ошибка.\nПожалуйста, попробуйте снова',
       name: 'default_error_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Не удалось загрузить картинку`
+  String get image_error_text {
+    return Intl.message(
+      'Не удалось загрузить картинку',
+      name: 'image_error_text',
       desc: '',
       args: [],
     );

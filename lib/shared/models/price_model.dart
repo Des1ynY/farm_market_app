@@ -7,9 +7,9 @@ part 'price_model.g.dart';
 @freezed
 class PriceModel with _$PriceModel {
   const factory PriceModel(
-    double? capacity,
+    num? capacity,
     @JsonKey(name: 'capacity_type') String? capacityType,
-    double? price,
+    num? price,
   ) = _PriceModel;
 
   factory PriceModel.fromJson(Map<String, dynamic> json) =>
