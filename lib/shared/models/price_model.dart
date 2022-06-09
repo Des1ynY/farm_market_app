@@ -9,7 +9,7 @@ class PriceModel with _$PriceModel {
   const factory PriceModel(
     num? capacity,
     @JsonKey(name: 'capacity_type') String? capacityType,
-    num? price,
+    num price,
   ) = _PriceModel;
 
   factory PriceModel.fromJson(Map<String, dynamic> json) =>

@@ -5,55 +5,55 @@ import 'package:farm_market_app/shared/models/item_in_order_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalCart extends ICart {
-  LocalCart({required this.prefs}) {
-    cart = initCart();
-  }
+  LocalCart({required this.prefs});
 
   final SharedPreferences prefs;
-  List<ItemInOrderModel> cart = [];
 
-  static const _cartKey = 'cart';
+  @override
+  Future<Map<String, ItemInOrderModel>> getCart() async {
+    final Map<String, ItemInOrderModel> items = {};
+    Set<String> cartKeys = prefs.getKeys();
 
-  List<ItemInOrderModel> initCart() {
-    final List<ItemInOrderModel> items = [];
-    final jsons = prefs.getStringList(_cartKey) ?? [];
-    for (var json in jsons) {
-      final item = ItemInOrderModel.fromJson(jsonDecode(json));
-      items.add(item);
+    for (var key in cartKeys) {
+      final json = prefs.getString(key)!;
+      items[key] = ItemInOrderModel.fromJson(jsonDecode(json));
     }
     return items;
   }
 
   @override
-  Future<List<ItemInOrderModel>> getCart() async => cart;
-
-  @override
   Future<void> addNewItem(ItemInOrderModel item) async {
-    // TODO: implement clearCart
-    throw UnimplementedError();
+    final key = item.toMapKey();
+    if (prefs.containsKey(key)) throw Exception('Item already in a cart');
+    await prefs.setString(key, jsonEncode(item.increaseCount().toJson()));
   }
 
   @override
-  Future<void> clearCart() {
-    // TODO: implement clearCart
-    throw UnimplementedError();
+  Future<void> increaseItemCount(String itemId) async {
+    if (!prefs.containsKey(itemId)) throw Exception('Item not in a cart');
+    final json = prefs.getString(itemId)!;
+    final item = ItemInOrderModel.fromJson(jsonDecode(json));
+    await prefs.setString(itemId, jsonEncode(item.increaseCount().toJson()));
   }
 
   @override
-  Future<void> decreaseItemCount(ItemInOrderModel item) {
-    // TODO: implement decreaseItemCount
-    throw UnimplementedError();
+  Future<void> decreaseItemCount(String itemId) async {
+    if (!prefs.containsKey(itemId)) throw Exception('Item not in a cart');
+    final json = prefs.getString(itemId)!;
+    final item = ItemInOrderModel.fromJson(jsonDecode(json));
+    if (item.count == 1) {
+      deleteItem(itemId);
+    } else {
+      await prefs.setString(itemId, jsonEncode(item.decreaseCount().toJson()));
+    }
   }
 
   @override
-  Future<void> deleteItem(ItemInOrderModel item) {
-    // TODO: implement deleteItem
-    throw UnimplementedError();
+  Future<void> deleteItem(String itemId) async {
+    if (!prefs.containsKey(itemId)) throw Exception('Item not in a cart');
+    await prefs.remove(itemId);
   }
 
   @override
-  Future<void> increaseItemCount(ItemInOrderModel item) {
-    // TODO: implement increaseItemCount
-    throw UnimplementedError();
-  }
+  Future<void> clearCart() async => prefs.clear();
 }

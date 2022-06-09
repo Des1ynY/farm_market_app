@@ -23,7 +23,7 @@ mixin _$PriceModel {
   num? get capacity => throw _privateConstructorUsedError;
   @JsonKey(name: 'capacity_type')
   String? get capacityType => throw _privateConstructorUsedError;
-  num? get price => throw _privateConstructorUsedError;
+  num get price => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,7 +39,7 @@ abstract class $PriceModelCopyWith<$Res> {
   $Res call(
       {num? capacity,
       @JsonKey(name: 'capacity_type') String? capacityType,
-      num? price});
+      num price});
 }
 
 /// @nodoc
@@ -68,7 +68,7 @@ class _$PriceModelCopyWithImpl<$Res> implements $PriceModelCopyWith<$Res> {
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as num?,
+              as num,
     ));
   }
 }
@@ -83,7 +83,7 @@ abstract class _$$_PriceModelCopyWith<$Res>
   $Res call(
       {num? capacity,
       @JsonKey(name: 'capacity_type') String? capacityType,
-      num? price});
+      num price});
 }
 
 /// @nodoc
@@ -114,7 +114,7 @@ class __$$_PriceModelCopyWithImpl<$Res> extends _$PriceModelCopyWithImpl<$Res>
       price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as num?,
+              as num,
     ));
   }
 }
@@ -134,7 +134,7 @@ class _$_PriceModel implements _PriceModel {
   @JsonKey(name: 'capacity_type')
   final String? capacityType;
   @override
-  final num? price;
+  final num price;
 
   @override
   String toString() {
@@ -175,7 +175,7 @@ abstract class _PriceModel implements PriceModel {
   const factory _PriceModel(
       final num? capacity,
       @JsonKey(name: 'capacity_type') final String? capacityType,
-      final num? price) = _$_PriceModel;
+      final num price) = _$_PriceModel;
 
   factory _PriceModel.fromJson(Map<String, dynamic> json) =
       _$_PriceModel.fromJson;
@@ -186,7 +186,7 @@ abstract class _PriceModel implements PriceModel {
   @JsonKey(name: 'capacity_type')
   String? get capacityType => throw _privateConstructorUsedError;
   @override
-  num? get price => throw _privateConstructorUsedError;
+  num get price => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_PriceModelCopyWith<_$_PriceModel> get copyWith =>

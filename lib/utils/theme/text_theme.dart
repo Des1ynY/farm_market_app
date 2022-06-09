@@ -55,11 +55,18 @@ extension AppTextTheme on TextTheme {
     );
   }
 
+  TextStyle get itemPriceStyle {
+    return _defaultTextStyle.copyWith(
+      fontSize: 24,
+      fontWeight: FontWeight.w700,
+    );
+  }
+
   TextStyle get itemSelectedPriceTileStyle {
     return itemUnselectedPriceTileStyle.copyWith(color: Colors.white);
   }
 
-  TextStyle get buttonTextStyle {
+  TextStyle get defaultButtonTextStyle {
     return const TextStyle(
       fontFamily: _manropeFamily,
       fontSize: 16,

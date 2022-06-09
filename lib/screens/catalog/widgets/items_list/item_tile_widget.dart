@@ -104,7 +104,8 @@ class _ItemTileState extends State<ItemTile> {
               child: Center(
                 child: Text(
                   S.of(context).item_tile_more,
-                  style: textTheme.buttonTextStyle.copyWith(fontSize: 11),
+                  style:
+                      textTheme.defaultButtonTextStyle.copyWith(fontSize: 11),
                 ),
               ),
             ),

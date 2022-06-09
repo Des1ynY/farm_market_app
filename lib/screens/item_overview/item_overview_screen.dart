@@ -1,12 +1,14 @@
 import 'package:farm_market_app/screens/item_overview/blocs/item_bloc/item_bloc.dart';
 import 'package:farm_market_app/screens/item_overview/widgets/description_block/description_block_widget.dart';
 import 'package:farm_market_app/screens/item_overview/widgets/images_block/images_block_widget.dart';
-import 'package:farm_market_app/screens/item_overview/widgets/item_overview_appbar_widget.dart';
 import 'package:farm_market_app/screens/item_overview/widgets/item_overview_title.dart';
 import 'package:farm_market_app/screens/item_overview/widgets/price_block/price_block_widget.dart';
 import 'package:farm_market_app/shared/models/category_model.dart';
 import 'package:farm_market_app/shared/models/item_model.dart';
 import 'package:farm_market_app/shared/widgets/background_gradient_widget.dart';
+import 'package:farm_market_app/shared/widgets/buttons/cart_button_widget.dart';
+import 'package:farm_market_app/shared/widgets/transparent_appbar.dart';
+import 'package:farm_market_app/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,7 +39,10 @@ class ItemOverviewScreen extends StatelessWidget {
           body: BackgroundGradient(
             child: Column(
               children: [
-                const ItemOverviewAppbar(),
+                const TransparentAppBar(
+                  leading: BackButton(color: ColorsTheme.textDefaultColor),
+                  action: CartButton(),
+                ),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Column(

@@ -1,4 +1,4 @@
-import 'package:farm_market_app/screens/item_overview/widgets/price_block/item_price_select_tile.dart';
+import 'package:farm_market_app/screens/item_overview/widgets/price_block/price_selection/item_price_select_tile.dart';
 import 'package:farm_market_app/shared/models/price_model.dart';
 import 'package:farm_market_app/utils/l10n/generated/l10n.dart';
 import 'package:farm_market_app/utils/theme/theme.dart';
@@ -17,7 +17,7 @@ class ItemPriceSelectWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 20,
-        vertical: 10,
+        vertical: 5,
       ),
       child: Row(
         children: [

@@ -1,14 +1,16 @@
+import 'package:farm_market_app/data/interfaces/cart_interface.dart';
+import 'package:farm_market_app/shared/blocs/add_to_cart_bloc/add_to_cart_bloc.dart';
+import 'package:farm_market_app/shared/blocs/cart_bloc/cart_bloc.dart';
 import 'package:farm_market_app/utils/l10n/generated/l10n.dart';
 import 'package:farm_market_app/utils/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class FarmMarketApp extends StatefulWidget {
-  const FarmMarketApp({required this.prefs, Key? key}) : super(key: key);
+  const FarmMarketApp({required this.cart, Key? key}) : super(key: key);
 
-  final SharedPreferences prefs;
+  final ICart cart;
 
   @override
   State<FarmMarketApp> createState() => _FarmMarketAppState();
@@ -25,8 +27,14 @@ class _FarmMarketAppState extends State<FarmMarketApp> {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => widget.prefs,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              CartBloc(cart: widget.cart)..add(const CartEvent.refresh()),
+        ),
+        BlocProvider(create: (context) => AddToCartBloc(cart: widget.cart)),
+      ],
       child: MaterialApp.router(
         routeInformationParser: _appRouter.defaultRouteParser(),
         routerDelegate: _appRouter.delegate(),

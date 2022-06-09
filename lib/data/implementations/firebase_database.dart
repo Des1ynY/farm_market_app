@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farm_market_app/data/interfaces/database_interface.dart';
 import 'package:farm_market_app/shared/models/category_model.dart';
@@ -28,9 +26,13 @@ class FirebaseDatabase extends IDatabase {
     } else {
       query = await _db.collection(_category).get();
       for (var doc in query.docs) {
-        final category = CategoryModel.fromJson(doc.data());
-        if (category.parentCategory != null) continue;
-        categories.add(category.copyWith(uid: doc.id));
+        try {
+          final category = CategoryModel.fromJson(doc.data());
+          if (category.parentCategory != null) continue;
+          categories.add(category.copyWith(uid: doc.id));
+        } on Object {
+          continue;
+        }
       }
     }
     return categories;
@@ -41,7 +43,12 @@ class FirebaseDatabase extends IDatabase {
     final doc = await _db.collection(_category).doc(categoryId).get();
 
     if (!doc.exists) throw Exception('Referenced document does not exist');
-    return CategoryModel.fromJson(doc.data()!).copyWith(uid: categoryId);
+
+    try {
+      return CategoryModel.fromJson(doc.data()!).copyWith(uid: categoryId);
+    } on Object {
+      rethrow;
+    }
   }
 
   @override
@@ -58,9 +65,26 @@ class FirebaseDatabase extends IDatabase {
       query = await _db.collection(_items).get();
     }
     for (var doc in query.docs) {
-      final item = ItemModel.fromJson(doc.data());
-      items.add(item.copyWith(uid: doc.id));
+      try {
+        final item = ItemModel.fromJson(doc.data());
+        items.add(item.copyWith(uid: doc.id));
+      } on Object {
+        continue;
+      }
     }
     return items;
+  }
+
+  @override
+  Future<ItemModel> getItemById({required String itemId}) async {
+    final doc = await _db.collection(_items).doc(itemId).get();
+
+    if (!doc.exists) throw Exception('Referenced document does not exist');
+
+    try {
+      return ItemModel.fromJson(doc.data()!).copyWith(uid: itemId);
+    } on Object {
+      rethrow;
+    }
   }
 }

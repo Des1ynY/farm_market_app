@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:farm_market_app/shared/widgets/background_gradient_widget.dart';
-import 'package:farm_market_app/shared/widgets/buttons/button_widget.dart';
+import 'package:farm_market_app/shared/widgets/buttons/default_button_widget.dart';
 import 'package:farm_market_app/utils/l10n/generated/l10n.dart';
 import 'package:farm_market_app/utils/router/router.dart';
 import 'package:farm_market_app/utils/theme/theme.dart';
@@ -46,9 +46,12 @@ class OnboardingScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                Button(
+                DefaultButton(
                   onPressed: () => _onPressed(context),
-                  label: S.of(context).next_button_text,
+                  child: Text(
+                    S.of(context).next_button_text,
+                    style: Theme.of(context).textTheme.defaultButtonTextStyle,
+                  ),
                 ),
               ],
             ),

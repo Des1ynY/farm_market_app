@@ -15,7 +15,25 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
   final ICart cart;
 
-  void _refresh(_Refresh event, Emitter<CartState> emit) {}
+  void _refresh(_Refresh event, Emitter<CartState> emit) async {
+    emit(const CartState.loading());
+    try {
+      final cartData = await cart.getCart();
+      emit(CartState.loaded(cartData));
+    } on Object catch (error, stackTrace) {
+      addError(error, stackTrace);
+      emit(const CartState.error());
+    }
+  }
 
-  void _clearCart(_ClearCart event, Emitter<CartState> emit) {}
+  void _clearCart(_ClearCart event, Emitter<CartState> emit) async {
+    emit(const CartState.loading());
+    try {
+      await cart.clearCart();
+      add(const CartEvent.refresh());
+    } on Object catch (error, stackTrace) {
+      addError(error, stackTrace);
+      emit(const CartState.error());
+    }
+  }
 }

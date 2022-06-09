@@ -12,9 +12,12 @@
     "item_composition": "Состав",
     "item_description": "Описание",
     "item_select_price": "Выбрать фасовку",
+    "item_no_sale": "Нет в продаже",
     "cart_appbar_title": "Корзина",
+    "refresh_button_text": "Обновить",
+    "next_button_text": "Далее",
+    "add_to_cart_button_text": "В корзину",
     "default_error_text": "Произошла непредвиденная ошибка.\nПожалуйста, попробуйте снова",
     "image_error_text": "Не удалось загрузить картинку",
-    "refresh_button_text": "Обновить",
-    "next_button_text": "Далее"
+    "task_error_text": "Не удалось выполнить запрос"
 }

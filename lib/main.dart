@@ -1,4 +1,5 @@
 import 'package:farm_market_app/app.dart';
+import 'package:farm_market_app/data/implementations/local_cart.dart';
 import 'package:farm_market_app/utils/bloc_observer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +10,10 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   final prefs = await SharedPreferences.getInstance();
+  final cart = LocalCart(prefs: prefs);
 
   BlocOverrides.runZoned(
-    () => runApp(FarmMarketApp(prefs: prefs)),
+    () => runApp(FarmMarketApp(cart: cart)),
     blocObserver: AppBlocObserver(),
   );
 }

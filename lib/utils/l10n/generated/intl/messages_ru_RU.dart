@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "add_to_cart_button_text":
+            MessageLookupByLibrary.simpleMessage("В корзину"),
         "cart_appbar_title": MessageLookupByLibrary.simpleMessage("Корзина"),
         "catalog_appbar_title":
             MessageLookupByLibrary.simpleMessage("Каталог товаров"),
@@ -32,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Не удалось загрузить картинку"),
         "item_composition": MessageLookupByLibrary.simpleMessage("Состав"),
         "item_description": MessageLookupByLibrary.simpleMessage("Описание"),
+        "item_no_sale": MessageLookupByLibrary.simpleMessage("Нет в продаже"),
         "item_select_price":
             MessageLookupByLibrary.simpleMessage("Выбрать фасовку"),
         "item_tile_more": MessageLookupByLibrary.simpleMessage("Подробнее"),
@@ -47,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Добро пожаловать"),
         "onboarding_text": MessageLookupByLibrary.simpleMessage(
             "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Proin et"),
-        "refresh_button_text": MessageLookupByLibrary.simpleMessage("Обновить")
+        "refresh_button_text": MessageLookupByLibrary.simpleMessage("Обновить"),
+        "task_error_text":
+            MessageLookupByLibrary.simpleMessage("Не удалось выполнить запрос")
       };
 }

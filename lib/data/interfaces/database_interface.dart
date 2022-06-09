@@ -7,4 +7,6 @@ abstract class IDatabase {
   Future<CategoryModel> getCategoryById({required String categoryId});
 
   Future<List<ItemModel>> getItems({String? categoryId});
+
+  Future<ItemModel> getItemById({required String itemId});
 }

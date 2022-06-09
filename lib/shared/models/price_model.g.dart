@@ -10,7 +10,7 @@ _$_PriceModel _$$_PriceModelFromJson(Map<String, dynamic> json) =>
     _$_PriceModel(
       json['capacity'] as num?,
       json['capacity_type'] as String?,
-      json['price'] as num?,
+      json['price'] as num,
     );
 
 Map<String, dynamic> _$$_PriceModelToJson(_$_PriceModel instance) =>

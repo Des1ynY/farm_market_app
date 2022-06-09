@@ -20,7 +20,7 @@ class ItemPriceSelectTile extends StatelessWidget {
           child: Container(
             height: kItemPriceSize,
             width: kItemPriceSize,
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
               color: state.selectedPrice == price
                   ? ColorsTheme.textDefaultColor

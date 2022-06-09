@@ -1,5 +1,5 @@
 import 'package:farm_market_app/screens/catalog/blocs/categories_bloc/categories_bloc.dart';
-import 'package:farm_market_app/screens/catalog/widgets/appbar/cart_button_widget.dart';
+import 'package:farm_market_app/shared/widgets/buttons/cart_button_widget.dart';
 import 'package:farm_market_app/shared/widgets/transparent_appbar.dart';
 import 'package:farm_market_app/utils/l10n/generated/l10n.dart';
 import 'package:farm_market_app/utils/theme/theme.dart';
@@ -19,7 +19,7 @@ class CatalogAppBar extends StatelessWidget {
         onPressed: () => _onMenuButtonPressed(context),
       ),
       title: S.of(context).catalog_appbar_title,
-      action: const CatalogAppBarCartButton(),
+      action: const CartButton(),
     );
   }
 

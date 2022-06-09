@@ -180,11 +180,51 @@ class S {
     );
   }
 
+  /// `Нет в продаже`
+  String get item_no_sale {
+    return Intl.message(
+      'Нет в продаже',
+      name: 'item_no_sale',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Корзина`
   String get cart_appbar_title {
     return Intl.message(
       'Корзина',
       name: 'cart_appbar_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Обновить`
+  String get refresh_button_text {
+    return Intl.message(
+      'Обновить',
+      name: 'refresh_button_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Далее`
+  String get next_button_text {
+    return Intl.message(
+      'Далее',
+      name: 'next_button_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `В корзину`
+  String get add_to_cart_button_text {
+    return Intl.message(
+      'В корзину',
+      name: 'add_to_cart_button_text',
       desc: '',
       args: [],
     );
@@ -210,21 +250,11 @@ class S {
     );
   }
 
-  /// `Обновить`
-  String get refresh_button_text {
+  /// `Не удалось выполнить запрос`
+  String get task_error_text {
     return Intl.message(
-      'Обновить',
-      name: 'refresh_button_text',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Далее`
-  String get next_button_text {
-    return Intl.message(
-      'Далее',
-      name: 'next_button_text',
+      'Не удалось выполнить запрос',
+      name: 'task_error_text',
       desc: '',
       args: [],
     );

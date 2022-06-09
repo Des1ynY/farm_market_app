@@ -6,7 +6,8 @@ class CartState with _$CartState {
 
   const factory CartState.loading() = _Loading;
 
-  const factory CartState.loaded(List<ItemInOrderModel> order) = _Loaded;
+  const factory CartState.loaded(Map<String, ItemInOrderModel> cartData) =
+      _Loaded;
 
   const factory CartState.error() = _Error;
 }
