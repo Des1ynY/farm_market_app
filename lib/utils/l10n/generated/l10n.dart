@@ -190,11 +190,51 @@ class S {
     );
   }
 
+  /// `В корзине нет товаров`
+  String get cart_no_items {
+    return Intl.message(
+      'В корзине нет товаров',
+      name: 'cart_no_items',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Корзина`
   String get cart_appbar_title {
     return Intl.message(
       'Корзина',
       name: 'cart_appbar_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Сумма`
+  String get summ_price {
+    return Intl.message(
+      'Сумма',
+      name: 'summ_price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Стоимость доставки`
+  String get delivery_price {
+    return Intl.message(
+      'Стоимость доставки',
+      name: 'delivery_price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Итого`
+  String get overall_price {
+    return Intl.message(
+      'Итого',
+      name: 'overall_price',
       desc: '',
       args: [],
     );
@@ -230,6 +270,16 @@ class S {
     );
   }
 
+  /// `Оформить заказ`
+  String get create_order_button_text {
+    return Intl.message(
+      'Оформить заказ',
+      name: 'create_order_button_text',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Произошла непредвиденная ошибка.\nПожалуйста, попробуйте снова`
   String get default_error_text {
     return Intl.message(
@@ -255,6 +305,16 @@ class S {
     return Intl.message(
       'Не удалось выполнить запрос',
       name: 'task_error_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Не удалось получить информацию о товаре`
+  String get item_error_text {
+    return Intl.message(
+      'Не удалось получить информацию о товаре',
+      name: 'item_error_text',
       desc: '',
       args: [],
     );

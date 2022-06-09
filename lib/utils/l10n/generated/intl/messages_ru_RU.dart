@@ -25,15 +25,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_to_cart_button_text":
             MessageLookupByLibrary.simpleMessage("В корзину"),
         "cart_appbar_title": MessageLookupByLibrary.simpleMessage("Корзина"),
+        "cart_no_items":
+            MessageLookupByLibrary.simpleMessage("В корзине нет товаров"),
         "catalog_appbar_title":
             MessageLookupByLibrary.simpleMessage("Каталог товаров"),
         "categories_title": MessageLookupByLibrary.simpleMessage("Категории"),
+        "create_order_button_text":
+            MessageLookupByLibrary.simpleMessage("Оформить заказ"),
         "default_error_text": MessageLookupByLibrary.simpleMessage(
             "Произошла непредвиденная ошибка.\nПожалуйста, попробуйте снова"),
+        "delivery_price":
+            MessageLookupByLibrary.simpleMessage("Стоимость доставки"),
         "image_error_text": MessageLookupByLibrary.simpleMessage(
             "Не удалось загрузить картинку"),
         "item_composition": MessageLookupByLibrary.simpleMessage("Состав"),
         "item_description": MessageLookupByLibrary.simpleMessage("Описание"),
+        "item_error_text": MessageLookupByLibrary.simpleMessage(
+            "Не удалось получить информацию о товаре"),
         "item_no_sale": MessageLookupByLibrary.simpleMessage("Нет в продаже"),
         "item_select_price":
             MessageLookupByLibrary.simpleMessage("Выбрать фасовку"),
@@ -50,7 +58,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Добро пожаловать"),
         "onboarding_text": MessageLookupByLibrary.simpleMessage(
             "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Proin et"),
+        "overall_price": MessageLookupByLibrary.simpleMessage("Итого"),
         "refresh_button_text": MessageLookupByLibrary.simpleMessage("Обновить"),
+        "summ_price": MessageLookupByLibrary.simpleMessage("Сумма"),
         "task_error_text":
             MessageLookupByLibrary.simpleMessage("Не удалось выполнить запрос")
       };

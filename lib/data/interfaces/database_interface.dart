@@ -9,4 +9,7 @@ abstract class IDatabase {
   Future<List<ItemModel>> getItems({String? categoryId});
 
   Future<ItemModel> getItemById({required String itemId});
+
+  Future<MapEntry<ItemModel, CategoryModel?>> getItemByIdWithCategory(
+      {required String itemId});
 }

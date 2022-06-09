@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:farm_market_app/screens/item_overview/blocs/item_bloc/item_bloc.dart';
+import 'package:farm_market_app/shared/widgets/item_parts/item_image_widget.dart';
 import 'package:farm_market_app/shared/widgets/loading_indicator_widget.dart';
 import 'package:farm_market_app/utils/theme/colors_theme.dart';
 import 'package:flutter/material.dart';
@@ -24,15 +25,10 @@ class ImagesListTile extends StatelessWidget {
           border: Border.all(color: ColorsTheme.stokeColor, width: 1),
           borderRadius: BorderRadius.circular(_borderRadius),
         ),
-        child: ClipRRect(
+        child: ItemImageWidget(
+          imageUrl: imageUrl,
+          fit: BoxFit.cover,
           borderRadius: BorderRadius.circular(_borderRadius),
-          child: CachedNetworkImage(
-            imageUrl: imageUrl,
-            fit: BoxFit.cover,
-            errorWidget: (context, error, object) => Container(),
-            progressIndicatorBuilder: (context, object, progress) =>
-                LoadingIndicator(),
-          ),
         ),
       ),
     );

@@ -1,8 +1,8 @@
-import 'package:farm_market_app/screens/item_overview/widgets/price_block/in_cart/item_count_button.dart';
-import 'package:farm_market_app/screens/item_overview/widgets/price_block/item_price_text_widget.dart';
-import 'package:farm_market_app/shared/blocs/add_to_cart_bloc/add_to_cart_bloc.dart';
+import 'package:farm_market_app/screens/item_overview/widgets/price_block/in_cart/cart_increase_button.dart';
 import 'package:farm_market_app/shared/blocs/cart_bloc/cart_bloc.dart';
+import 'package:farm_market_app/screens/item_overview/widgets/price_block/in_cart/cart_decrease_button.dart';
 import 'package:farm_market_app/shared/models/item_in_order_model.dart';
+import 'package:farm_market_app/shared/widgets/item_parts/item_price_text_widget.dart';
 import 'package:farm_market_app/shared/widgets/loading_indicator_widget.dart';
 import 'package:farm_market_app/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +21,13 @@ class ItemInCartWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          ItemPriceTextWidget(
-            price: inCartItem.selectedPrice.price * inCartItem.count,
+          Expanded(
+            flex: 2,
+            child: ItemPriceTextWidget(
+              price: inCartItem.selectedPrice.price * inCartItem.count,
+            ),
           ),
           const SizedBox(width: 10),
           BlocBuilder<CartBloc, CartState>(
@@ -35,31 +39,18 @@ class ItemInCartWidget extends StatelessWidget {
               return Expanded(
                 flex: 3,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    ItemCountButton(
-                      onPressed: cartLoaded
-                          ? () => _onDecreaseButtonPressed(context)
-                          : null,
-                      icon: const Icon(
-                        Icons.remove,
-                        color: ColorsTheme.textDefaultColor,
-                      ),
-                      buttonColor: Colors.white,
-                    ),
+                    CartItemDecreaseCountButton(inCartItem: inCartItem),
+                    const SizedBox(width: 5),
                     cartLoaded
                         ? Text(
                             inCartItem.count.toString(),
                             style: Theme.of(context).textTheme.itemPriceStyle,
                           )
                         : LoadingIndicator(),
-                    ItemCountButton(
-                      onPressed: cartLoaded
-                          ? () => _onIncreaseButtonPressed(context)
-                          : null,
-                      icon: const Icon(Icons.add, color: Colors.white),
-                      buttonColor: ColorsTheme.textDefaultColor,
-                    ),
+                    const SizedBox(width: 5),
+                    CartItemIncreaseCountButton(inCartItem: inCartItem),
                   ],
                 ),
               );
@@ -68,13 +59,5 @@ class ItemInCartWidget extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  void _onIncreaseButtonPressed(BuildContext context) {
-    context.read<AddToCartBloc>().add(AddToCartEvent.increaseCount(inCartItem));
-  }
-
-  void _onDecreaseButtonPressed(BuildContext context) {
-    context.read<AddToCartBloc>().add(AddToCartEvent.decreaseCount(inCartItem));
   }
 }

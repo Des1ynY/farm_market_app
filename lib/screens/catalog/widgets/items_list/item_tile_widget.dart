@@ -2,9 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:farm_market_app/data/implementations/firebase_database.dart';
 import 'package:farm_market_app/screens/catalog/blocs/item_tile_bloc/item_tile_bloc.dart';
-import 'package:farm_market_app/shared/widgets/item_category_row.dart';
+import 'package:farm_market_app/shared/widgets/item_parts/item_category_row.dart';
 import 'package:farm_market_app/shared/models/category_model.dart';
 import 'package:farm_market_app/shared/models/item_model.dart';
+import 'package:farm_market_app/shared/widgets/item_parts/item_image_widget.dart';
 import 'package:farm_market_app/utils/l10n/generated/l10n.dart';
 import 'package:farm_market_app/utils/router/router.dart';
 import 'package:farm_market_app/utils/theme/theme.dart';
@@ -50,19 +51,12 @@ class _ItemTileState extends State<ItemTile> {
         ),
         child: Column(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(9),
-              child: CachedNetworkImage(
-                imageUrl: widget.item.images?.first ?? '',
+            if (widget.item.images != null && widget.item.images!.isNotEmpty)
+              ItemImageWidget(
+                imageUrl: widget.item.images!.first,
                 height: 115,
-                fit: BoxFit.fitWidth,
-                errorWidget: (context, error, object) {
-                  return Center(
-                    child: Text(S.of(context).no_image_available),
-                  );
-                },
+                borderRadius: BorderRadius.circular(9),
               ),
-            ),
             const SizedBox(height: 5),
             if (widget.item.name != null)
               Text(

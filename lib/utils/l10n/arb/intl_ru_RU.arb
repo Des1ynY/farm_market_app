@@ -13,11 +13,17 @@
     "item_description": "Описание",
     "item_select_price": "Выбрать фасовку",
     "item_no_sale": "Нет в продаже",
+    "cart_no_items": "В корзине нет товаров",
     "cart_appbar_title": "Корзина",
+    "summ_price": "Сумма",
+    "delivery_price": "Стоимость доставки",
+    "overall_price": "Итого",
     "refresh_button_text": "Обновить",
     "next_button_text": "Далее",
     "add_to_cart_button_text": "В корзину",
+    "create_order_button_text": "Оформить заказ",
     "default_error_text": "Произошла непредвиденная ошибка.\nПожалуйста, попробуйте снова",
     "image_error_text": "Не удалось загрузить картинку",
-    "task_error_text": "Не удалось выполнить запрос"
+    "task_error_text": "Не удалось выполнить запрос",
+    "item_error_text": "Не удалось получить информацию о товаре"
 }

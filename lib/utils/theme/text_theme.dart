@@ -46,19 +46,19 @@ extension AppTextTheme on TextTheme {
     );
   }
 
+  TextStyle get itemPriceStyle {
+    return _defaultTextStyle.copyWith(
+      fontSize: 24,
+      fontWeight: FontWeight.w700,
+    );
+  }
+
   TextStyle get itemUnselectedPriceTileStyle {
     return const TextStyle(
       fontFamily: _manropeFamily,
       fontSize: 12,
       fontWeight: FontWeight.w400,
       color: ColorsTheme.textPassiveColor,
-    );
-  }
-
-  TextStyle get itemPriceStyle {
-    return _defaultTextStyle.copyWith(
-      fontSize: 24,
-      fontWeight: FontWeight.w700,
     );
   }
 

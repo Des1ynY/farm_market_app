@@ -1,6 +1,6 @@
 import 'package:farm_market_app/screens/item_overview/blocs/item_bloc/item_bloc.dart';
-import 'package:farm_market_app/screens/item_overview/widgets/price_block/add_to_cart/item_add_to_cart_widget.dart';
 import 'package:farm_market_app/screens/item_overview/widgets/price_block/in_cart/item_in_cart_widget.dart';
+import 'package:farm_market_app/screens/item_overview/widgets/price_block/item_add_to_cart_widget.dart';
 import 'package:farm_market_app/screens/item_overview/widgets/price_block/item_no_sale_widget.dart';
 import 'package:farm_market_app/screens/item_overview/widgets/price_block/price_selection/item_price_select_widget.dart';
 import 'package:farm_market_app/shared/blocs/add_to_cart_bloc/add_to_cart_bloc.dart';
@@ -59,7 +59,9 @@ class _PriceBlockWidgetState extends State<PriceBlockWidget> {
                       final inCart = items.containsKey(inCartId);
 
                       return inCart
-                          ? ItemInCartWidget(inCartItem: items[inCartId]!)
+                          ? ItemInCartWidget(
+                              inCartItem: items[inCartId]!,
+                            )
                           : ItemAddToCartWidget(
                               selectedPrice: itemState.selectedPrice!,
                             );

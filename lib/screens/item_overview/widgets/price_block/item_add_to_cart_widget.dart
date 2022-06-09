@@ -1,4 +1,4 @@
-import 'package:farm_market_app/screens/item_overview/widgets/price_block/item_price_text_widget.dart';
+import 'package:farm_market_app/shared/widgets/item_parts/item_price_text_widget.dart';
 import 'package:farm_market_app/shared/blocs/add_to_cart_bloc/add_to_cart_bloc.dart';
 import 'package:farm_market_app/shared/blocs/cart_bloc/cart_bloc.dart';
 import 'package:farm_market_app/shared/models/item_in_order_model.dart';
@@ -40,7 +40,10 @@ class _ItemAddToCartWidgetState extends State<ItemAddToCartWidget> {
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
       child: Row(
         children: [
-          ItemPriceTextWidget(price: widget.selectedPrice.price),
+          Expanded(
+            flex: 2,
+            child: ItemPriceTextWidget(price: widget.selectedPrice.price),
+          ),
           const SizedBox(width: 10),
           Expanded(
             flex: 3,

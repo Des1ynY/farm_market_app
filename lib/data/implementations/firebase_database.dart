@@ -87,4 +87,25 @@ class FirebaseDatabase extends IDatabase {
       rethrow;
     }
   }
+
+  @override
+  Future<MapEntry<ItemModel, CategoryModel?>> getItemByIdWithCategory(
+      {required String itemId}) async {
+    final itemDoc = await _db.collection(_items).doc(itemId).get();
+
+    if (!itemDoc.exists) throw Exception('Referenced document does not exist');
+
+    try {
+      final item = ItemModel.fromJson(itemDoc.data()!).copyWith(uid: itemId);
+
+      if (item.category == null) return MapEntry(item, null);
+
+      final categoryId = item.category!.split('/').last;
+      final category = await getCategoryById(categoryId: categoryId);
+
+      return MapEntry(item, category);
+    } on Object {
+      rethrow;
+    }
+  }
 }

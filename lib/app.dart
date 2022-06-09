@@ -35,18 +35,29 @@ class _FarmMarketAppState extends State<FarmMarketApp> {
         ),
         BlocProvider(create: (context) => AddToCartBloc(cart: widget.cart)),
       ],
-      child: MaterialApp.router(
-        routeInformationParser: _appRouter.defaultRouteParser(),
-        routerDelegate: _appRouter.delegate(),
-        localizationsDelegates: const [
-          GlobalCupertinoLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          S.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales,
-        theme: ThemeData(fontFamily: 'Manrope'),
+      child: BlocListener<AddToCartBloc, AddToCartState>(
+        listener: (context, state) {
+          state.whenOrNull(
+              initial: () => _onCartTaskFinished(context),
+              error: () => _onCartTaskFinished(context));
+        },
+        child: MaterialApp.router(
+          routeInformationParser: _appRouter.defaultRouteParser(),
+          routerDelegate: _appRouter.delegate(),
+          localizationsDelegates: const [
+            GlobalCupertinoLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            S.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
+          theme: ThemeData(fontFamily: 'Manrope'),
+        ),
       ),
     );
+  }
+
+  void _onCartTaskFinished(BuildContext context) {
+    context.read<CartBloc>().add(const CartEvent.refresh());
   }
 }

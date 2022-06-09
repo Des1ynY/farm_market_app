@@ -55,5 +55,5 @@ class LocalCart extends ICart {
   }
 
   @override
-  Future<void> clearCart() async => prefs.clear();
+  Future<void> clearCart() async => await prefs.clear();
 }

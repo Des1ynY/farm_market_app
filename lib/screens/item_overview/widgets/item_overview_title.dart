@@ -1,6 +1,6 @@
 import 'package:farm_market_app/shared/models/category_model.dart';
 import 'package:farm_market_app/shared/models/item_model.dart';
-import 'package:farm_market_app/shared/widgets/item_category_row.dart';
+import 'package:farm_market_app/shared/widgets/item_parts/item_category_row.dart';
 import 'package:farm_market_app/utils/l10n/generated/l10n.dart';
 import 'package:farm_market_app/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
