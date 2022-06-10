@@ -70,6 +70,16 @@ class S {
     );
   }
 
+  /// `Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Proin et`
+  String get select_city_text {
+    return Intl.message(
+      'Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Proin et',
+      name: 'select_city_text',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Каталог товаров`
   String get catalog_appbar_title {
     return Intl.message(
@@ -240,6 +250,76 @@ class S {
     );
   }
 
+  /// `Заказ успешно оформлен`
+  String get order_finish_text {
+    return Intl.message(
+      'Заказ успешно оформлен',
+      name: 'order_finish_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Как вы хотите получить заказ?`
+  String get select_delivery_type {
+    return Intl.message(
+      'Как вы хотите получить заказ?',
+      name: 'select_delivery_type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Доставка`
+  String get delivery {
+    return Intl.message(
+      'Доставка',
+      name: 'delivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Самовывоз`
+  String get pickup {
+    return Intl.message(
+      'Самовывоз',
+      name: 'pickup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Укажите адрес доставки`
+  String get enter_address {
+    return Intl.message(
+      'Укажите адрес доставки',
+      name: 'enter_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Укажите контактный номер`
+  String get enter_phone {
+    return Intl.message(
+      'Укажите контактный номер',
+      name: 'enter_phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Комментарий`
+  String get enter_comment {
+    return Intl.message(
+      'Комментарий',
+      name: 'enter_comment',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Обновить`
   String get refresh_button_text {
     return Intl.message(
@@ -280,6 +360,16 @@ class S {
     );
   }
 
+  /// `Заказать`
+  String get confirm_order_button_text {
+    return Intl.message(
+      'Заказать',
+      name: 'confirm_order_button_text',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Произошла непредвиденная ошибка.\nПожалуйста, попробуйте снова`
   String get default_error_text {
     return Intl.message(
@@ -315,6 +405,16 @@ class S {
     return Intl.message(
       'Не удалось получить информацию о товаре',
       name: 'item_error_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Введите данные`
+  String get input_error_text {
+    return Intl.message(
+      'Введите данные',
+      name: 'input_error_text',
       desc: '',
       args: [],
     );

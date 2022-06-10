@@ -22,7 +22,7 @@ class AddToCartBloc extends Bloc<AddToCartEvent, AddToCartState> {
     emit(const AddToCartState.processing());
     try {
       await cart.addNewItem(event.item);
-      emit(const AddToCartState.initial());
+      emit(const AddToCartState.success());
     } on Object catch (error, stackTrace) {
       addError(error, stackTrace);
       emit(const AddToCartState.error());
@@ -37,7 +37,7 @@ class AddToCartBloc extends Bloc<AddToCartEvent, AddToCartState> {
     emit(const AddToCartState.processing());
     try {
       await cart.increaseItemCount(event.item.toMapKey());
-      emit(const AddToCartState.initial());
+      emit(const AddToCartState.success());
     } on Object catch (error, stackTrace) {
       addError(error, stackTrace);
       emit(const AddToCartState.error());
@@ -52,7 +52,7 @@ class AddToCartBloc extends Bloc<AddToCartEvent, AddToCartState> {
     emit(const AddToCartState.processing());
     try {
       await cart.decreaseItemCount(event.item.toMapKey());
-      emit(const AddToCartState.initial());
+      emit(const AddToCartState.success());
     } on Object catch (error, stackTrace) {
       addError(error, stackTrace);
       emit(const AddToCartState.error());
@@ -67,7 +67,7 @@ class AddToCartBloc extends Bloc<AddToCartEvent, AddToCartState> {
     emit(const AddToCartState.processing());
     try {
       await cart.deleteItem(event.item.toMapKey());
-      emit(const AddToCartState.initial());
+      emit(const AddToCartState.success());
     } on Object catch (error, stackTrace) {
       addError(error, stackTrace);
       emit(const AddToCartState.error());

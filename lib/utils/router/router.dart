@@ -1,7 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:farm_market_app/screens/order_finish/order_finish_screen.dart';
 import 'package:farm_market_app/screens/screens.dart';
+import 'package:farm_market_app/screens/select_city/select_city_screen.dart';
 import 'package:farm_market_app/shared/models/category_model.dart';
 import 'package:farm_market_app/shared/models/item_model.dart';
+import 'package:farm_market_app/utils/router/first_launch_guard.dart';
 import 'package:farm_market_app/utils/router/router_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,13 +16,12 @@ part 'router.gr.dart';
     AutoRoute(
       page: RouterScreen,
       path: '/',
-      initial: true,
       children: [
-        // FIXME
         AutoRoute(
           page: OnboardingScreen,
           path: 'onboarding',
           initial: true,
+          guards: [FirstLaunchGuard],
         ),
         AutoRoute(
           page: CatalogScreen,
@@ -33,8 +35,22 @@ part 'router.gr.dart';
           page: ItemOverviewScreen,
           path: 'item',
         ),
+        AutoRoute(
+          page: CreateOrderScreen,
+          path: 'create_order',
+        ),
+        AutoRoute(
+          page: SelectCityScreen,
+          path: 'select_city',
+        ),
+        AutoRoute(
+          page: OrderFinishScreen,
+          path: 'order_finish',
+        )
       ],
     ),
   ],
 )
-class AppRouter extends _$AppRouter {}
+class AppRouter extends _$AppRouter {
+  AppRouter({required super.firstLaunchGuard});
+}

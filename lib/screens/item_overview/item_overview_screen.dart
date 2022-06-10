@@ -2,6 +2,7 @@ import 'package:farm_market_app/screens/item_overview/blocs/item_bloc/item_bloc.
 import 'package:farm_market_app/screens/item_overview/widgets/description_block/description_block_widget.dart';
 import 'package:farm_market_app/screens/item_overview/widgets/images_block/images_block_widget.dart';
 import 'package:farm_market_app/screens/item_overview/widgets/item_overview_title.dart';
+import 'package:farm_market_app/screens/item_overview/widgets/price_block/item_no_sale_widget.dart';
 import 'package:farm_market_app/screens/item_overview/widgets/price_block/price_block_widget.dart';
 import 'package:farm_market_app/shared/models/category_model.dart';
 import 'package:farm_market_app/shared/models/item_model.dart';
@@ -55,7 +56,8 @@ class ItemOverviewScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const PriceBlockWidget(),
+                if (item.prices?.firstOrNull != null) const PriceBlockWidget(),
+                if (item.prices?.firstOrNull == null) const ItemNoSaleWidget(),
               ],
             ),
           ),

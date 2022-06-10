@@ -83,4 +83,8 @@ extension AppTextTheme on TextTheme {
       color: ColorsTheme.textPassiveColor,
     );
   }
+
+  TextStyle get labelTextStyle {
+    return _defaultTextStyle.copyWith(fontSize: 14);
+  }
 }

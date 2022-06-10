@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:farm_market_app/data/implementations/firebase_database.dart';
 import 'package:farm_market_app/screens/catalog/blocs/item_tile_bloc/item_tile_bloc.dart';
 import 'package:farm_market_app/shared/widgets/item_parts/item_category_row.dart';

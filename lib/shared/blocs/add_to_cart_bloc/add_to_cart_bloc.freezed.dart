@@ -79,6 +79,8 @@ abstract class $AddToCartEventCopyWith<$Res> {
           AddToCartEvent value, $Res Function(AddToCartEvent) then) =
       _$AddToCartEventCopyWithImpl<$Res>;
   $Res call({ItemInOrderModel item});
+
+  $ItemInOrderModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -101,6 +103,13 @@ class _$AddToCartEventCopyWithImpl<$Res>
               as ItemInOrderModel,
     ));
   }
+
+  @override
+  $ItemInOrderModelCopyWith<$Res> get item {
+    return $ItemInOrderModelCopyWith<$Res>(_value.item, (value) {
+      return _then(_value.copyWith(item: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -111,6 +120,9 @@ abstract class _$$_AddToCartCopyWith<$Res>
       __$$_AddToCartCopyWithImpl<$Res>;
   @override
   $Res call({ItemInOrderModel item});
+
+  @override
+  $ItemInOrderModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -261,6 +273,9 @@ abstract class _$$_IncreaseCountCopyWith<$Res>
       __$$_IncreaseCountCopyWithImpl<$Res>;
   @override
   $Res call({ItemInOrderModel item});
+
+  @override
+  $ItemInOrderModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -411,6 +426,9 @@ abstract class _$$_DecreaseCountCopyWith<$Res>
       __$$_DecreaseCountCopyWithImpl<$Res>;
   @override
   $Res call({ItemInOrderModel item});
+
+  @override
+  $ItemInOrderModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -561,6 +579,9 @@ abstract class _$$_DeleteItemCopyWith<$Res>
       __$$_DeleteItemCopyWithImpl<$Res>;
   @override
   $Res call({ItemInOrderModel item});
+
+  @override
+  $ItemInOrderModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -709,6 +730,7 @@ mixin _$AddToCartState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() processing,
+    required TResult Function() success,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
@@ -716,6 +738,7 @@ mixin _$AddToCartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? processing,
+    TResult Function()? success,
     TResult Function()? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -723,6 +746,7 @@ mixin _$AddToCartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? processing,
+    TResult Function()? success,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
@@ -731,6 +755,7 @@ mixin _$AddToCartState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Processing value) processing,
+    required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -738,6 +763,7 @@ mixin _$AddToCartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -745,6 +771,7 @@ mixin _$AddToCartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -809,6 +836,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() processing,
+    required TResult Function() success,
     required TResult Function() error,
   }) {
     return initial();
@@ -819,6 +847,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? processing,
+    TResult Function()? success,
     TResult Function()? error,
   }) {
     return initial?.call();
@@ -829,6 +858,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? processing,
+    TResult Function()? success,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -843,6 +873,7 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Processing value) processing,
+    required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -853,6 +884,7 @@ class _$_Initial implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -863,6 +895,7 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -920,6 +953,7 @@ class _$_Processing implements _Processing {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() processing,
+    required TResult Function() success,
     required TResult Function() error,
   }) {
     return processing();
@@ -930,6 +964,7 @@ class _$_Processing implements _Processing {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? processing,
+    TResult Function()? success,
     TResult Function()? error,
   }) {
     return processing?.call();
@@ -940,6 +975,7 @@ class _$_Processing implements _Processing {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? processing,
+    TResult Function()? success,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -954,6 +990,7 @@ class _$_Processing implements _Processing {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Processing value) processing,
+    required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) {
     return processing(this);
@@ -964,6 +1001,7 @@ class _$_Processing implements _Processing {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
   }) {
     return processing?.call(this);
@@ -974,6 +1012,7 @@ class _$_Processing implements _Processing {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -986,6 +1025,121 @@ class _$_Processing implements _Processing {
 
 abstract class _Processing implements AddToCartState {
   const factory _Processing() = _$_Processing;
+}
+
+/// @nodoc
+abstract class _$$_SuccessCopyWith<$Res> {
+  factory _$$_SuccessCopyWith(
+          _$_Success value, $Res Function(_$_Success) then) =
+      __$$_SuccessCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SuccessCopyWithImpl<$Res> extends _$AddToCartStateCopyWithImpl<$Res>
+    implements _$$_SuccessCopyWith<$Res> {
+  __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
+      : super(_value, (v) => _then(v as _$_Success));
+
+  @override
+  _$_Success get _value => super._value as _$_Success;
+}
+
+/// @nodoc
+
+class _$_Success implements _Success {
+  const _$_Success();
+
+  @override
+  String toString() {
+    return 'AddToCartState.success()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Success);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() processing,
+    required TResult Function() success,
+    required TResult Function() error,
+  }) {
+    return success();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? processing,
+    TResult Function()? success,
+    TResult Function()? error,
+  }) {
+    return success?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? processing,
+    TResult Function()? success,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Success implements AddToCartState {
+  const factory _Success() = _$_Success;
 }
 
 /// @nodoc
@@ -1028,6 +1182,7 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() processing,
+    required TResult Function() success,
     required TResult Function() error,
   }) {
     return error();
@@ -1038,6 +1193,7 @@ class _$_Error implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? processing,
+    TResult Function()? success,
     TResult Function()? error,
   }) {
     return error?.call();
@@ -1048,6 +1204,7 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? processing,
+    TResult Function()? success,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -1062,6 +1219,7 @@ class _$_Error implements _Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Processing value) processing,
+    required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -1072,6 +1230,7 @@ class _$_Error implements _Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -1082,6 +1241,7 @@ class _$_Error implements _Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Processing value)? processing,
+    TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {

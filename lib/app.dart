@@ -2,13 +2,17 @@ import 'package:farm_market_app/data/interfaces/cart_interface.dart';
 import 'package:farm_market_app/shared/blocs/add_to_cart_bloc/add_to_cart_bloc.dart';
 import 'package:farm_market_app/shared/blocs/cart_bloc/cart_bloc.dart';
 import 'package:farm_market_app/utils/l10n/generated/l10n.dart';
+import 'package:farm_market_app/utils/router/first_launch_guard.dart';
 import 'package:farm_market_app/utils/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 class FarmMarketApp extends StatefulWidget {
-  const FarmMarketApp({required this.cart, Key? key}) : super(key: key);
+  const FarmMarketApp({
+    required this.cart,
+    Key? key,
+  }) : super(key: key);
 
   final ICart cart;
 
@@ -22,7 +26,7 @@ class _FarmMarketAppState extends State<FarmMarketApp> {
   @override
   void initState() {
     super.initState();
-    _appRouter = AppRouter();
+    _appRouter = AppRouter(firstLaunchGuard: FirstLaunchGuard());
   }
 
   @override
@@ -30,16 +34,19 @@ class _FarmMarketAppState extends State<FarmMarketApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              CartBloc(cart: widget.cart)..add(const CartEvent.refresh()),
+          create: (context) => CartBloc(cart: widget.cart)
+            ..add(
+              const CartEvent.refresh(),
+            ),
         ),
         BlocProvider(create: (context) => AddToCartBloc(cart: widget.cart)),
       ],
       child: BlocListener<AddToCartBloc, AddToCartState>(
         listener: (context, state) {
           state.whenOrNull(
-              initial: () => _onCartTaskFinished(context),
-              error: () => _onCartTaskFinished(context));
+            success: () => _onCartTaskFinished(context),
+            error: () => _onCartTaskFinished(context),
+          );
         },
         child: MaterialApp.router(
           routeInformationParser: _appRouter.defaultRouteParser(),

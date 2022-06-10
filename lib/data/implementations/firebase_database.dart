@@ -1,13 +1,17 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farm_market_app/data/interfaces/database_interface.dart';
 import 'package:farm_market_app/shared/models/category_model.dart';
 import 'package:farm_market_app/shared/models/item_model.dart';
+import 'package:farm_market_app/shared/models/order_model.dart';
 
 class FirebaseDatabase extends IDatabase {
   static final _db = FirebaseFirestore.instance;
 
   static const _category = 'category';
   static const _items = 'items';
+  static const _orders = 'orders';
 
   @override
   Future<List<CategoryModel>> getCategories({String? parentCategoryId}) async {
@@ -104,6 +108,16 @@ class FirebaseDatabase extends IDatabase {
       final category = await getCategoryById(categoryId: categoryId);
 
       return MapEntry(item, category);
+    } on Object {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> setNewOrder(OrderModel order) async {
+    try {
+      final json = jsonEncode(order.toJson());
+      await _db.collection(_orders).doc(order.uid).set(jsonDecode(json));
     } on Object {
       rethrow;
     }

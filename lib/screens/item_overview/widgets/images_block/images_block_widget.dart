@@ -1,10 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:farm_market_app/screens/item_overview/blocs/item_bloc/item_bloc.dart';
 import 'package:farm_market_app/screens/item_overview/widgets/images_block/images_list_view_widget.dart';
 import 'package:farm_market_app/shared/models/item_model.dart';
 import 'package:farm_market_app/shared/widgets/item_parts/item_image_widget.dart';
-import 'package:farm_market_app/shared/widgets/loading_indicator_widget.dart';
-import 'package:farm_market_app/utils/l10n/generated/l10n.dart';
 import 'package:farm_market_app/utils/theme/colors_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

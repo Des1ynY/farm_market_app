@@ -1,4 +1,6 @@
+import 'package:farm_market_app/screens/cart/widgets/cart_order_dialog.dart';
 import 'package:farm_market_app/screens/cart/widgets/cart_overall_price/cart_overall_price_text_row.dart';
+import 'package:farm_market_app/shared/models/city_model.dart';
 import 'package:farm_market_app/shared/models/item_in_order_model.dart';
 import 'package:farm_market_app/shared/widgets/buttons/default_button_widget.dart';
 import 'package:farm_market_app/utils/l10n/generated/l10n.dart';
@@ -6,18 +8,21 @@ import 'package:farm_market_app/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class CartOverallPriceWidget extends StatelessWidget {
-  const CartOverallPriceWidget({required this.items, Key? key})
-      : super(key: key);
+  const CartOverallPriceWidget({
+    required this.items,
+    required this.cityData,
+    Key? key,
+  }) : super(key: key);
 
   final List<ItemInOrderModel> items;
+  final CityModel cityData;
 
   @override
   Widget build(BuildContext context) {
-    // FIXME: load deliveryPrice from remote config, check if price is available
-    const deliveryPrice = 0;
-    final itemsPrice = items
+    final deliveryPrice = cityData.deliveryPrice?.toDouble() ?? 0.0;
+    final double itemsPrice = items
         .map((e) => e.selectedPrice.price * e.count)
-        .fold(0.0, (prev, e) => (prev as double) + e);
+        .fold(0.0, (prev, e) => prev + e);
 
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
@@ -32,10 +37,11 @@ class CartOverallPriceWidget extends StatelessWidget {
             caption: S.of(context).summ_price,
             price: itemsPrice,
           ),
-          CartOverallPriceTextRow(
-            caption: S.of(context).delivery_price,
-            price: deliveryPrice,
-          ),
+          if (cityData.hasDelivery)
+            CartOverallPriceTextRow(
+              caption: S.of(context).delivery_price,
+              price: deliveryPrice,
+            ),
           CartOverallPriceTextRow(
             caption: S.of(context).overall_price,
             price: itemsPrice + deliveryPrice,
@@ -53,5 +59,10 @@ class CartOverallPriceWidget extends StatelessWidget {
     );
   }
 
-  void _onPressed(BuildContext context) {}
+  void _onPressed(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => CartOrderDialog(cityData: cityData),
+    );
+  }
 }

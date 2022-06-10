@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:farm_market_app/data/app_config_repository.dart';
 import 'package:farm_market_app/data/interfaces/cart_interface.dart';
+import 'package:farm_market_app/shared/models/city_model.dart';
 import 'package:farm_market_app/shared/models/item_in_order_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -18,8 +20,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   void _refresh(_Refresh event, Emitter<CartState> emit) async {
     emit(const CartState.loading());
     try {
+      final cityData = await AppConfig.getCity();
       final cartData = await cart.getCart();
-      emit(CartState.loaded(cartData));
+      emit(CartState.loaded(cartData, cityData));
     } on Object catch (error, stackTrace) {
       addError(error, stackTrace);
       emit(const CartState.error());

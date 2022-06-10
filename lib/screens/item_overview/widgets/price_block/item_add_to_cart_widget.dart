@@ -51,7 +51,7 @@ class _ItemAddToCartWidgetState extends State<ItemAddToCartWidget> {
               builder: (context, state) {
                 final cartLoaded = state.maybeWhen(
                   orElse: () => false,
-                  loaded: (items) => true,
+                  loaded: (items, city) => true,
                 );
                 return DefaultButton(
                   onPressed: cartLoaded ? () => _onPressed(context) : null,

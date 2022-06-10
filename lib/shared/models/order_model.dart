@@ -8,14 +8,15 @@ part 'order_model.g.dart';
 @freezed
 class OrderModel with _$OrderModel {
   const factory OrderModel(
-    String? uid,
-    List<ItemInOrderModel>? items,
-    @JsonKey(name: 'delivery_type') String? deliveryType,
-    String? deliveryAddress,
-    String? contactPhone,
+    String uid,
+    List<ItemInOrderModel> items,
+    @JsonKey(name: 'delivery_type') String deliveryType,
+    String deliveryCity,
+    String deliveryAddress,
+    String contactPhone,
     String? comment,
-    double? price,
-    @JsonKey(name: 'creation_date') String? creationDate,
+    double price,
+    @JsonKey(name: 'creation_date') String creationDate,
   ) = _OrderModel;
 
   factory OrderModel.fromJson(Map<String, dynamic> json) =>

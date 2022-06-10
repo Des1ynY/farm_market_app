@@ -6,5 +6,7 @@ class AddToCartState with _$AddToCartState {
 
   const factory AddToCartState.processing() = _Processing;
 
+  const factory AddToCartState.success() = _Success;
+
   const factory AddToCartState.error() = _Error;
 }

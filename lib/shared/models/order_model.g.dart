@@ -8,16 +8,17 @@ part of 'order_model.dart';
 
 _$_OrderModel _$$_OrderModelFromJson(Map<String, dynamic> json) =>
     _$_OrderModel(
-      json['uid'] as String?,
-      (json['items'] as List<dynamic>?)
-          ?.map((e) => ItemInOrderModel.fromJson(e as Map<String, dynamic>))
+      json['uid'] as String,
+      (json['items'] as List<dynamic>)
+          .map((e) => ItemInOrderModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      json['delivery_type'] as String?,
-      json['deliveryAddress'] as String?,
-      json['contactPhone'] as String?,
+      json['delivery_type'] as String,
+      json['deliveryCity'] as String,
+      json['deliveryAddress'] as String,
+      json['contactPhone'] as String,
       json['comment'] as String?,
-      (json['price'] as num?)?.toDouble(),
-      json['creation_date'] as String?,
+      (json['price'] as num).toDouble(),
+      json['creation_date'] as String,
     );
 
 Map<String, dynamic> _$$_OrderModelToJson(_$_OrderModel instance) =>
@@ -25,6 +26,7 @@ Map<String, dynamic> _$$_OrderModelToJson(_$_OrderModel instance) =>
       'uid': instance.uid,
       'items': instance.items,
       'delivery_type': instance.deliveryType,
+      'deliveryCity': instance.deliveryCity,
       'deliveryAddress': instance.deliveryAddress,
       'contactPhone': instance.contactPhone,
       'comment': instance.comment,

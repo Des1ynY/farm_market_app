@@ -6,6 +6,7 @@ import 'package:farm_market_app/shared/widgets/background_gradient_widget.dart';
 import 'package:farm_market_app/shared/widgets/error_widget.dart';
 import 'package:farm_market_app/shared/widgets/loading_indicator_widget.dart';
 import 'package:farm_market_app/utils/l10n/generated/l10n.dart';
+import 'package:farm_market_app/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,18 +25,20 @@ class CartScreen extends StatelessWidget {
                 builder: (context, state) {
                   return state.maybeWhen(
                     orElse: () => LoadingIndicator(),
-                    error: () => CustomErrorWidget(
-                      errorText: S.of(context).default_error_text,
-                      onRefreshButtonPressed: () =>
-                          _onRefreshButtonPressed(context),
+                    error: () => Padding(
+                      padding: kPageDefaultPadding,
+                      child: CustomErrorWidget(
+                        errorText: S.of(context).default_error_text,
+                        onRefreshButtonPressed: () =>
+                            _onRefreshButtonPressed(context),
+                      ),
                     ),
-                    loaded: (items) {
+                    loaded: (items, city) {
                       if (items.isEmpty) {
                         return Center(
                           child: Text(S.of(context).cart_no_items),
                         );
                       }
-
                       return Column(
                         children: [
                           Expanded(
@@ -43,7 +46,10 @@ class CartScreen extends StatelessWidget {
                               inCartItems: items.values.toList(),
                             ),
                           ),
-                          CartOverallPriceWidget(items: items.values.toList())
+                          CartOverallPriceWidget(
+                            items: items.values.toList(),
+                            cityData: city,
+                          )
                         ],
                       );
                     },

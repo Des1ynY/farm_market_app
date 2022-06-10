@@ -29,13 +29,13 @@ class OnboardingScreen extends StatelessWidget {
                 const SizedBox(height: 40),
                 Image.asset(
                   _assetImagePath,
-                  height: 226,
-                  width: 226,
+                  fit: BoxFit.fitWidth,
                 ),
                 Column(
                   children: [
                     Text(
                       S.of(context).onboarding_heading_text,
+                      textAlign: TextAlign.center,
                       style: textTheme.onboardingHeadingTextStyle,
                     ),
                     const SizedBox(height: 35),
@@ -62,6 +62,6 @@ class OnboardingScreen extends StatelessWidget {
   }
 
   void _onPressed(BuildContext context) {
-    context.router.replace(const CatalogRoute());
+    context.router.replace(const SelectCityRoute());
   }
 }

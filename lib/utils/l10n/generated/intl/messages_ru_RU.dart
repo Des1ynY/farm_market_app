@@ -30,14 +30,24 @@ class MessageLookup extends MessageLookupByLibrary {
         "catalog_appbar_title":
             MessageLookupByLibrary.simpleMessage("Каталог товаров"),
         "categories_title": MessageLookupByLibrary.simpleMessage("Категории"),
+        "confirm_order_button_text":
+            MessageLookupByLibrary.simpleMessage("Заказать"),
         "create_order_button_text":
             MessageLookupByLibrary.simpleMessage("Оформить заказ"),
         "default_error_text": MessageLookupByLibrary.simpleMessage(
             "Произошла непредвиденная ошибка.\nПожалуйста, попробуйте снова"),
+        "delivery": MessageLookupByLibrary.simpleMessage("Доставка"),
         "delivery_price":
             MessageLookupByLibrary.simpleMessage("Стоимость доставки"),
+        "enter_address":
+            MessageLookupByLibrary.simpleMessage("Укажите адрес доставки"),
+        "enter_comment": MessageLookupByLibrary.simpleMessage("Комментарий"),
+        "enter_phone":
+            MessageLookupByLibrary.simpleMessage("Укажите контактный номер"),
         "image_error_text": MessageLookupByLibrary.simpleMessage(
             "Не удалось загрузить картинку"),
+        "input_error_text":
+            MessageLookupByLibrary.simpleMessage("Введите данные"),
         "item_composition": MessageLookupByLibrary.simpleMessage("Состав"),
         "item_description": MessageLookupByLibrary.simpleMessage("Описание"),
         "item_error_text": MessageLookupByLibrary.simpleMessage(
@@ -58,8 +68,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Добро пожаловать"),
         "onboarding_text": MessageLookupByLibrary.simpleMessage(
             "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Proin et"),
+        "order_finish_text":
+            MessageLookupByLibrary.simpleMessage("Заказ успешно оформлен"),
         "overall_price": MessageLookupByLibrary.simpleMessage("Итого"),
+        "pickup": MessageLookupByLibrary.simpleMessage("Самовывоз"),
         "refresh_button_text": MessageLookupByLibrary.simpleMessage("Обновить"),
+        "select_city_text": MessageLookupByLibrary.simpleMessage(
+            "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Proin et"),
+        "select_delivery_type": MessageLookupByLibrary.simpleMessage(
+            "Как вы хотите получить заказ?"),
         "summ_price": MessageLookupByLibrary.simpleMessage("Сумма"),
         "task_error_text":
             MessageLookupByLibrary.simpleMessage("Не удалось выполнить запрос")

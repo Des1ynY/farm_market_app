@@ -34,7 +34,7 @@ class ItemInCartWidget extends StatelessWidget {
             builder: (context, state) {
               final cartLoaded = state.maybeWhen(
                 orElse: () => false,
-                loaded: (items) => true,
+                loaded: (items, city) => true,
               );
               return Expanded(
                 flex: 3,

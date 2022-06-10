@@ -1,6 +1,7 @@
 {
     "onboarding_heading_text": "Добро пожаловать",
     "onboarding_text": "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Proin et",
+    "select_city_text": "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Proin et",
     "catalog_appbar_title": "Каталог товаров",
     "categories_title": "Категории",
     "no_name": "Без названия",
@@ -18,12 +19,21 @@
     "summ_price": "Сумма",
     "delivery_price": "Стоимость доставки",
     "overall_price": "Итого",
+    "order_finish_text": "Заказ успешно оформлен",
+    "select_delivery_type": "Как вы хотите получить заказ?",
+    "delivery": "Доставка",
+    "pickup": "Самовывоз",
+    "enter_address": "Укажите адрес доставки",
+    "enter_phone": "Укажите контактный номер",
+    "enter_comment": "Комментарий",
     "refresh_button_text": "Обновить",
     "next_button_text": "Далее",
     "add_to_cart_button_text": "В корзину",
     "create_order_button_text": "Оформить заказ",
+    "confirm_order_button_text": "Заказать",
     "default_error_text": "Произошла непредвиденная ошибка.\nПожалуйста, попробуйте снова",
     "image_error_text": "Не удалось загрузить картинку",
     "task_error_text": "Не удалось выполнить запрос",
-    "item_error_text": "Не удалось получить информацию о товаре"
+    "item_error_text": "Не удалось получить информацию о товаре",
+    "input_error_text": "Введите данные"
 }

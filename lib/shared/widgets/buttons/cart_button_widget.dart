@@ -18,7 +18,7 @@ class CartButton extends StatelessWidget {
           showBadge: state.maybeWhen(
             orElse: () => false,
             loading: () => true,
-            loaded: (items) => true,
+            loaded: (items, city) => true,
           ),
           badgeContent: state.maybeWhen(
             orElse: () => null,
@@ -27,7 +27,7 @@ class CartButton extends StatelessWidget {
               height: 10,
               child: LoadingIndicator(),
             ),
-            loaded: (items) => Text(
+            loaded: (items, city) => Text(
               items.length.toString(),
               style: const TextStyle(
                 inherit: true,

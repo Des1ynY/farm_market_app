@@ -20,16 +20,17 @@ OrderModel _$OrderModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrderModel {
-  String? get uid => throw _privateConstructorUsedError;
-  List<ItemInOrderModel>? get items => throw _privateConstructorUsedError;
+  String get uid => throw _privateConstructorUsedError;
+  List<ItemInOrderModel> get items => throw _privateConstructorUsedError;
   @JsonKey(name: 'delivery_type')
-  String? get deliveryType => throw _privateConstructorUsedError;
-  String? get deliveryAddress => throw _privateConstructorUsedError;
-  String? get contactPhone => throw _privateConstructorUsedError;
+  String get deliveryType => throw _privateConstructorUsedError;
+  String get deliveryCity => throw _privateConstructorUsedError;
+  String get deliveryAddress => throw _privateConstructorUsedError;
+  String get contactPhone => throw _privateConstructorUsedError;
   String? get comment => throw _privateConstructorUsedError;
-  double? get price => throw _privateConstructorUsedError;
+  double get price => throw _privateConstructorUsedError;
   @JsonKey(name: 'creation_date')
-  String? get creationDate => throw _privateConstructorUsedError;
+  String get creationDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,14 +44,15 @@ abstract class $OrderModelCopyWith<$Res> {
           OrderModel value, $Res Function(OrderModel) then) =
       _$OrderModelCopyWithImpl<$Res>;
   $Res call(
-      {String? uid,
-      List<ItemInOrderModel>? items,
-      @JsonKey(name: 'delivery_type') String? deliveryType,
-      String? deliveryAddress,
-      String? contactPhone,
+      {String uid,
+      List<ItemInOrderModel> items,
+      @JsonKey(name: 'delivery_type') String deliveryType,
+      String deliveryCity,
+      String deliveryAddress,
+      String contactPhone,
       String? comment,
-      double? price,
-      @JsonKey(name: 'creation_date') String? creationDate});
+      double price,
+      @JsonKey(name: 'creation_date') String creationDate});
 }
 
 /// @nodoc
@@ -66,6 +68,7 @@ class _$OrderModelCopyWithImpl<$Res> implements $OrderModelCopyWith<$Res> {
     Object? uid = freezed,
     Object? items = freezed,
     Object? deliveryType = freezed,
+    Object? deliveryCity = freezed,
     Object? deliveryAddress = freezed,
     Object? contactPhone = freezed,
     Object? comment = freezed,
@@ -76,23 +79,27 @@ class _$OrderModelCopyWithImpl<$Res> implements $OrderModelCopyWith<$Res> {
       uid: uid == freezed
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       items: items == freezed
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<ItemInOrderModel>?,
+              as List<ItemInOrderModel>,
       deliveryType: deliveryType == freezed
           ? _value.deliveryType
           : deliveryType // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      deliveryCity: deliveryCity == freezed
+          ? _value.deliveryCity
+          : deliveryCity // ignore: cast_nullable_to_non_nullable
+              as String,
       deliveryAddress: deliveryAddress == freezed
           ? _value.deliveryAddress
           : deliveryAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       contactPhone: contactPhone == freezed
           ? _value.contactPhone
           : contactPhone // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       comment: comment == freezed
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
@@ -100,11 +107,11 @@ class _$OrderModelCopyWithImpl<$Res> implements $OrderModelCopyWith<$Res> {
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       creationDate: creationDate == freezed
           ? _value.creationDate
           : creationDate // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -117,14 +124,15 @@ abstract class _$$_OrderModelCopyWith<$Res>
       __$$_OrderModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? uid,
-      List<ItemInOrderModel>? items,
-      @JsonKey(name: 'delivery_type') String? deliveryType,
-      String? deliveryAddress,
-      String? contactPhone,
+      {String uid,
+      List<ItemInOrderModel> items,
+      @JsonKey(name: 'delivery_type') String deliveryType,
+      String deliveryCity,
+      String deliveryAddress,
+      String contactPhone,
       String? comment,
-      double? price,
-      @JsonKey(name: 'creation_date') String? creationDate});
+      double price,
+      @JsonKey(name: 'creation_date') String creationDate});
 }
 
 /// @nodoc
@@ -142,6 +150,7 @@ class __$$_OrderModelCopyWithImpl<$Res> extends _$OrderModelCopyWithImpl<$Res>
     Object? uid = freezed,
     Object? items = freezed,
     Object? deliveryType = freezed,
+    Object? deliveryCity = freezed,
     Object? deliveryAddress = freezed,
     Object? contactPhone = freezed,
     Object? comment = freezed,
@@ -152,23 +161,27 @@ class __$$_OrderModelCopyWithImpl<$Res> extends _$OrderModelCopyWithImpl<$Res>
       uid == freezed
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       items == freezed
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<ItemInOrderModel>?,
+              as List<ItemInOrderModel>,
       deliveryType == freezed
           ? _value.deliveryType
           : deliveryType // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      deliveryCity == freezed
+          ? _value.deliveryCity
+          : deliveryCity // ignore: cast_nullable_to_non_nullable
+              as String,
       deliveryAddress == freezed
           ? _value.deliveryAddress
           : deliveryAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       contactPhone == freezed
           ? _value.contactPhone
           : contactPhone // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       comment == freezed
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
@@ -176,11 +189,11 @@ class __$$_OrderModelCopyWithImpl<$Res> extends _$OrderModelCopyWithImpl<$Res>
       price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       creationDate == freezed
           ? _value.creationDate
           : creationDate // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -190,8 +203,9 @@ class __$$_OrderModelCopyWithImpl<$Res> extends _$OrderModelCopyWithImpl<$Res>
 class _$_OrderModel implements _OrderModel {
   const _$_OrderModel(
       this.uid,
-      final List<ItemInOrderModel>? items,
+      final List<ItemInOrderModel> items,
       @JsonKey(name: 'delivery_type') this.deliveryType,
+      this.deliveryCity,
       this.deliveryAddress,
       this.contactPhone,
       this.comment,
@@ -203,34 +217,34 @@ class _$_OrderModel implements _OrderModel {
       _$$_OrderModelFromJson(json);
 
   @override
-  final String? uid;
-  final List<ItemInOrderModel>? _items;
+  final String uid;
+  final List<ItemInOrderModel> _items;
   @override
-  List<ItemInOrderModel>? get items {
-    final value = _items;
-    if (value == null) return null;
+  List<ItemInOrderModel> get items {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_items);
   }
 
   @override
   @JsonKey(name: 'delivery_type')
-  final String? deliveryType;
+  final String deliveryType;
   @override
-  final String? deliveryAddress;
+  final String deliveryCity;
   @override
-  final String? contactPhone;
+  final String deliveryAddress;
+  @override
+  final String contactPhone;
   @override
   final String? comment;
   @override
-  final double? price;
+  final double price;
   @override
   @JsonKey(name: 'creation_date')
-  final String? creationDate;
+  final String creationDate;
 
   @override
   String toString() {
-    return 'OrderModel(uid: $uid, items: $items, deliveryType: $deliveryType, deliveryAddress: $deliveryAddress, contactPhone: $contactPhone, comment: $comment, price: $price, creationDate: $creationDate)';
+    return 'OrderModel(uid: $uid, items: $items, deliveryType: $deliveryType, deliveryCity: $deliveryCity, deliveryAddress: $deliveryAddress, contactPhone: $contactPhone, comment: $comment, price: $price, creationDate: $creationDate)';
   }
 
   @override
@@ -242,6 +256,8 @@ class _$_OrderModel implements _OrderModel {
             const DeepCollectionEquality().equals(other._items, _items) &&
             const DeepCollectionEquality()
                 .equals(other.deliveryType, deliveryType) &&
+            const DeepCollectionEquality()
+                .equals(other.deliveryCity, deliveryCity) &&
             const DeepCollectionEquality()
                 .equals(other.deliveryAddress, deliveryAddress) &&
             const DeepCollectionEquality()
@@ -259,6 +275,7 @@ class _$_OrderModel implements _OrderModel {
       const DeepCollectionEquality().hash(uid),
       const DeepCollectionEquality().hash(_items),
       const DeepCollectionEquality().hash(deliveryType),
+      const DeepCollectionEquality().hash(deliveryCity),
       const DeepCollectionEquality().hash(deliveryAddress),
       const DeepCollectionEquality().hash(contactPhone),
       const DeepCollectionEquality().hash(comment),
@@ -278,37 +295,40 @@ class _$_OrderModel implements _OrderModel {
 
 abstract class _OrderModel implements OrderModel {
   const factory _OrderModel(
-          final String? uid,
-          final List<ItemInOrderModel>? items,
-          @JsonKey(name: 'delivery_type') final String? deliveryType,
-          final String? deliveryAddress,
-          final String? contactPhone,
+          final String uid,
+          final List<ItemInOrderModel> items,
+          @JsonKey(name: 'delivery_type') final String deliveryType,
+          final String deliveryCity,
+          final String deliveryAddress,
+          final String contactPhone,
           final String? comment,
-          final double? price,
-          @JsonKey(name: 'creation_date') final String? creationDate) =
+          final double price,
+          @JsonKey(name: 'creation_date') final String creationDate) =
       _$_OrderModel;
 
   factory _OrderModel.fromJson(Map<String, dynamic> json) =
       _$_OrderModel.fromJson;
 
   @override
-  String? get uid => throw _privateConstructorUsedError;
+  String get uid => throw _privateConstructorUsedError;
   @override
-  List<ItemInOrderModel>? get items => throw _privateConstructorUsedError;
+  List<ItemInOrderModel> get items => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'delivery_type')
-  String? get deliveryType => throw _privateConstructorUsedError;
+  String get deliveryType => throw _privateConstructorUsedError;
   @override
-  String? get deliveryAddress => throw _privateConstructorUsedError;
+  String get deliveryCity => throw _privateConstructorUsedError;
   @override
-  String? get contactPhone => throw _privateConstructorUsedError;
+  String get deliveryAddress => throw _privateConstructorUsedError;
+  @override
+  String get contactPhone => throw _privateConstructorUsedError;
   @override
   String? get comment => throw _privateConstructorUsedError;
   @override
-  double? get price => throw _privateConstructorUsedError;
+  double get price => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'creation_date')
-  String? get creationDate => throw _privateConstructorUsedError;
+  String get creationDate => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_OrderModelCopyWith<_$_OrderModel> get copyWith =>

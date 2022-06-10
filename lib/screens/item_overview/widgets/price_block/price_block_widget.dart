@@ -55,7 +55,7 @@ class _PriceBlockWidgetState extends State<PriceBlockWidget> {
                     orElse: () => ItemAddToCartWidget(
                       selectedPrice: itemState.selectedPrice!,
                     ),
-                    loaded: (items) {
+                    loaded: (items, city) {
                       final inCart = items.containsKey(inCartId);
 
                       return inCart
