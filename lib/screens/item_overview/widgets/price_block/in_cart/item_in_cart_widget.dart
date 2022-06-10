@@ -32,10 +32,6 @@ class ItemInCartWidget extends StatelessWidget {
           const SizedBox(width: 10),
           BlocBuilder<CartBloc, CartState>(
             builder: (context, state) {
-              final cartLoaded = state.maybeWhen(
-                orElse: () => false,
-                loaded: (items, city) => true,
-              );
               return Expanded(
                 flex: 3,
                 child: Row(
@@ -43,12 +39,10 @@ class ItemInCartWidget extends StatelessWidget {
                   children: [
                     CartItemDecreaseCountButton(inCartItem: inCartItem),
                     const SizedBox(width: 5),
-                    cartLoaded
-                        ? Text(
-                            inCartItem.count.toString(),
-                            style: Theme.of(context).textTheme.itemPriceStyle,
-                          )
-                        : LoadingIndicator(),
+                    Text(
+                      inCartItem.count.toString(),
+                      style: Theme.of(context).textTheme.itemPriceStyle,
+                    ),
                     const SizedBox(width: 5),
                     CartItemIncreaseCountButton(inCartItem: inCartItem),
                   ],

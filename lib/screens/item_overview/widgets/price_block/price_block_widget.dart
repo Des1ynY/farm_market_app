@@ -22,6 +22,9 @@ class PriceBlockWidget extends StatefulWidget {
 class _PriceBlockWidgetState extends State<PriceBlockWidget> {
   late final ItemModel _item;
 
+  // Без сохранения последнего виджета появляется мелькание, во время CartState.loading()
+  late Widget _lastWidget;
+
   @override
   void initState() {
     super.initState();
@@ -37,13 +40,18 @@ class _PriceBlockWidgetState extends State<PriceBlockWidget> {
 
         return BlocListener<AddToCartBloc, AddToCartState>(
           listener: (context, taskState) {
-            taskState.maybeWhen(
-              orElse: () =>
+            taskState.whenOrNull(
+              success: () =>
                   context.read<CartBloc>().add(const CartEvent.refresh()),
-              error: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text(S.of(context).task_error_text),
-                duration: const Duration(seconds: 1),
-              )),
+              error: () {
+                context.read<CartBloc>().add(const CartEvent.refresh());
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(S.of(context).task_error_text),
+                    duration: const Duration(seconds: 1),
+                  ),
+                );
+              },
             );
           },
           child: Column(
@@ -52,19 +60,18 @@ class _PriceBlockWidgetState extends State<PriceBlockWidget> {
               BlocBuilder<CartBloc, CartState>(
                 builder: (context, cartState) {
                   return cartState.maybeWhen(
-                    orElse: () => ItemAddToCartWidget(
-                      selectedPrice: itemState.selectedPrice!,
-                    ),
+                    orElse: () => _lastWidget,
                     loaded: (items, city) {
                       final inCart = items.containsKey(inCartId);
 
-                      return inCart
-                          ? ItemInCartWidget(
-                              inCartItem: items[inCartId]!,
-                            )
+                      final widget = inCart
+                          ? ItemInCartWidget(inCartItem: items[inCartId]!)
                           : ItemAddToCartWidget(
                               selectedPrice: itemState.selectedPrice!,
                             );
+                      _lastWidget = widget;
+
+                      return widget;
                     },
                   );
                 },

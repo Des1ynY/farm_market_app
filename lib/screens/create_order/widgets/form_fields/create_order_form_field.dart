@@ -36,17 +36,24 @@ class CreateOrderFormField extends StatelessWidget {
               vertical: 3,
               horizontal: 10,
             ),
-            border: OutlineInputBorder(
+            enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(kDefaultButtonBorderRadius),
               borderSide: const BorderSide(
                 color: ColorsTheme.stokeColor,
-                width: 1.5,
+                width: 1,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(kDefaultButtonBorderRadius),
               borderSide: const BorderSide(
                 color: ColorsTheme.buttonDefaultColor,
+                width: 1.5,
+              ),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(kDefaultButtonBorderRadius),
+              borderSide: const BorderSide(
+                color: ColorsTheme.badgeColor,
                 width: 1,
               ),
             ),
