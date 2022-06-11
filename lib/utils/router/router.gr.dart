@@ -56,8 +56,11 @@ class _$AppRouter extends RootStackRouter {
           routeData: routeData, child: const SelectCityScreen());
     },
     OrderFinishRoute.name: (routeData) {
+      final args = routeData.argsAs<OrderFinishRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const OrderFinishScreen());
+          routeData: routeData,
+          child:
+              OrderFinishScreen(pickupPoint: args.pickupPoint, key: args.key));
     }
   };
 
@@ -184,8 +187,24 @@ class SelectCityRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [OrderFinishScreen]
-class OrderFinishRoute extends PageRouteInfo<void> {
-  const OrderFinishRoute() : super(OrderFinishRoute.name, path: 'order_finish');
+class OrderFinishRoute extends PageRouteInfo<OrderFinishRouteArgs> {
+  OrderFinishRoute({required PickupModel? pickupPoint, Key? key})
+      : super(OrderFinishRoute.name,
+            path: 'order_finish',
+            args: OrderFinishRouteArgs(pickupPoint: pickupPoint, key: key));
 
   static const String name = 'OrderFinishRoute';
+}
+
+class OrderFinishRouteArgs {
+  const OrderFinishRouteArgs({required this.pickupPoint, this.key});
+
+  final PickupModel? pickupPoint;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'OrderFinishRouteArgs{pickupPoint: $pickupPoint, key: $key}';
+  }
 }

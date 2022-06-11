@@ -18,7 +18,7 @@ class CatalogScreen extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => ItemsBloc(database: FirebaseDatabase())
-            ..add(const ItemsEvent.started()),
+            ..add(const ItemsEvent.started(selectedCategory: [])),
         ),
         BlocProvider(
           create: (context) => CategoriesBloc(database: FirebaseDatabase())

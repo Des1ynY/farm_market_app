@@ -6,29 +6,51 @@ class TransparentAppBar extends StatelessWidget {
     this.leading,
     this.title,
     this.action,
-    this.centerTitle,
+    this.centerTitle = false,
     Key? key,
   }) : super(key: key);
 
   final Widget? leading;
   final Widget? action;
   final String? title;
-  final bool? centerTitle;
+  final bool centerTitle;
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      elevation: 0,
-      centerTitle: centerTitle,
-      backgroundColor: Colors.transparent,
-      leading: leading,
-      title: Text(
-        title ?? '',
-        style: Theme.of(context).textTheme.appBarTitleStyle,
+    final appBarHeight = AppBar().preferredSize.height;
+
+    return SafeArea(
+      child: Container(
+        height: appBarHeight,
+        width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Row(
+          children: [
+            Container(
+              width: kBackButtonSize,
+              height: kBackButtonSize,
+              alignment: Alignment.centerLeft,
+              child: leading,
+            ),
+            Expanded(
+              child: Container(
+                alignment:
+                    centerTitle ? Alignment.center : Alignment.centerLeft,
+                child: Text(
+                  title ?? '',
+                  style: Theme.of(context).textTheme.appBarTitleStyle,
+                ),
+              ),
+            ),
+            Container(
+              width: kBackButtonSize,
+              height: kBackButtonSize,
+              alignment: Alignment.centerRight,
+              child: action,
+            ),
+          ],
+        ),
       ),
-      actions: [
-        if (action != null) action!,
-      ],
     );
   }
 }

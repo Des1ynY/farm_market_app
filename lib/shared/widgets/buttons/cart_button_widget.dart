@@ -6,9 +6,12 @@ import 'package:farm_market_app/utils/router/router.dart';
 import 'package:farm_market_app/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CartButton extends StatelessWidget {
   const CartButton({Key? key}) : super(key: key);
+
+  static const _cartIcon = 'assets/icons/cart.svg';
 
   @override
   Widget build(BuildContext context) {
@@ -36,15 +39,18 @@ class CartButton extends StatelessWidget {
               ),
             ),
           ),
-          position: BadgePosition.topEnd(top: 3, end: 4),
+          position: BadgePosition.topEnd(top: -10, end: -6),
           badgeColor: ColorsTheme.badgeColor,
           toAnimate: true,
           elevation: 0,
           animationType: BadgeAnimationType.scale,
-          child: IconButton(
-            icon: const Icon(Icons.shopping_cart),
-            color: ColorsTheme.textDefaultColor,
-            onPressed: () => _onCartButtonPressed(context),
+          child: GestureDetector(
+            onTap: () => _onCartButtonPressed(context),
+            child: SvgPicture.asset(
+              _cartIcon,
+              width: kAppBarIconSize,
+              height: kAppBarIconSize,
+            ),
           ),
         );
       },

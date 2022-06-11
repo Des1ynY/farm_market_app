@@ -5,19 +5,25 @@ import 'package:farm_market_app/utils/l10n/generated/l10n.dart';
 import 'package:farm_market_app/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CatalogAppBar extends StatelessWidget {
   const CatalogAppBar({Key? key}) : super(key: key);
 
+  static const _menuIcon = 'assets/icons/category.svg';
+
   @override
   Widget build(BuildContext context) {
     return TransparentAppBar(
-      centerTitle: true,
-      leading: IconButton(
-        icon: const Icon(Icons.menu),
-        color: ColorsTheme.textDefaultColor,
-        onPressed: () => _onMenuButtonPressed(context),
+      leading: GestureDetector(
+        onTap: () => _onMenuButtonPressed(context),
+        child: SvgPicture.asset(
+          _menuIcon,
+          width: kAppBarIconSize,
+          height: kAppBarIconSize,
+        ),
       ),
+      centerTitle: true,
       title: S.of(context).catalog_appbar_title,
       action: const CartButton(),
     );

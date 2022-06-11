@@ -8,10 +8,10 @@ class ItemsState with _$ItemsState {
 
   const factory ItemsState.loaded(
     List<ItemModel> items,
-    CategoryModel? selectedCategory,
+    List<CategoryModel> selectedCategory,
   ) = _Loaded;
 
   const factory ItemsState.error() = _Error;
 
-  static CategoryModel? lastSelectedCategory;
+  static List<CategoryModel> lastSelectedCategory = [];
 }

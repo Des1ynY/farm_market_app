@@ -11,6 +11,7 @@ import 'package:farm_market_app/utils/router/router.dart';
 import 'package:farm_market_app/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CartItemListTile extends StatelessWidget {
   const CartItemListTile({
@@ -23,6 +24,8 @@ class CartItemListTile extends StatelessWidget {
   final ItemModel item;
   final ItemInOrderModel inCartItem;
   final CategoryModel? category;
+
+  static const _deleteIcon = 'assets/icons/delete.svg';
 
   @override
   Widget build(BuildContext context) {
@@ -80,11 +83,12 @@ class CartItemListTile extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () => _onDeleteItemButtonPressed(context),
-                  child: const Icon(
-                    Icons.delete,
-                    color: ColorsTheme.textDefaultColor,
+                  child: SvgPicture.asset(
+                    _deleteIcon,
+                    height: kAppBarIconSize,
+                    width: kAppBarIconSize,
                   ),
-                )
+                ),
               ],
             ),
           ),

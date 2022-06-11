@@ -8,6 +8,8 @@ import 'package:farm_market_app/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+List<CategoryModel> _previousCategories = [];
+
 class CategoryButton extends StatelessWidget {
   const CategoryButton({required this.category, Key? key}) : super(key: key);
 
@@ -45,11 +47,14 @@ class CategoryButton extends StatelessWidget {
 
   void _onPressed(BuildContext context) {
     if (category.children == null || category.children!.isEmpty) {
+      _previousCategories.add(category);
       context
           .read<ItemsBloc>()
-          .add(ItemsEvent.started(selectedCategory: category));
+          .add(ItemsEvent.started(selectedCategory: _previousCategories));
+      _previousCategories.clear();
       context.router.pop();
     } else {
+      _previousCategories.add(category);
       context
           .read<CategoriesBloc>()
           .add(CategoriesEvent.started(parentCategoryId: category.uid));

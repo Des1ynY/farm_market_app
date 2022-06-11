@@ -32,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "categories_title": MessageLookupByLibrary.simpleMessage("Категории"),
         "confirm_order_button_text":
             MessageLookupByLibrary.simpleMessage("Заказать"),
+        "create_map_button_text":
+            MessageLookupByLibrary.simpleMessage("Построить маршрут"),
         "create_order_button_text":
             MessageLookupByLibrary.simpleMessage("Оформить заказ"),
         "default_error_text": MessageLookupByLibrary.simpleMessage(
@@ -63,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Нет картинки"),
         "no_items_available": MessageLookupByLibrary.simpleMessage(
             "В данной категории пока нет товаров"),
+        "no_map_error_text": MessageLookupByLibrary.simpleMessage(
+            "Доступных карт не обнаружено"),
         "no_name": MessageLookupByLibrary.simpleMessage("Без названия"),
         "onboarding_heading_text":
             MessageLookupByLibrary.simpleMessage("Добро пожаловать"),
@@ -73,6 +77,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "overall_price": MessageLookupByLibrary.simpleMessage("Итого"),
         "pickup": MessageLookupByLibrary.simpleMessage("Самовывоз"),
         "refresh_button_text": MessageLookupByLibrary.simpleMessage("Обновить"),
+        "restore_filters_button_text":
+            MessageLookupByLibrary.simpleMessage("Сбросить фильтр"),
         "select_city_text": MessageLookupByLibrary.simpleMessage(
             "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Proin et"),
         "select_delivery_type": MessageLookupByLibrary.simpleMessage(

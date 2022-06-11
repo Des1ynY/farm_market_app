@@ -1,9 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:farm_market_app/screens/order_finish/order_finish_screen.dart';
 import 'package:farm_market_app/screens/screens.dart';
-import 'package:farm_market_app/screens/select_city/select_city_screen.dart';
 import 'package:farm_market_app/shared/models/category_model.dart';
 import 'package:farm_market_app/shared/models/item_model.dart';
+import 'package:farm_market_app/shared/models/pickup_model.dart';
 import 'package:farm_market_app/utils/router/first_launch_guard.dart';
 import 'package:farm_market_app/utils/router/router_screen.dart';
 import 'package:flutter/material.dart';

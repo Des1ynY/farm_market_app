@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:farm_market_app/data/app_config_repository.dart';
 import 'package:farm_market_app/data/implementations/firebase_database.dart';
 import 'package:farm_market_app/screens/create_order/blocs/create_order_bloc/create_order_bloc.dart';
 import 'package:farm_market_app/screens/create_order/widgets/create_order_appbar.dart';
@@ -101,6 +102,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
                                         _isDeliveryType
                                             ? DeliveryAddressField(
                                                 controller: _addressController,
+                                                cityData: city,
                                                 focusNode: _addressFocus,
                                                 nextField: _phoneFocus,
                                               )
@@ -177,9 +179,16 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
     context.read<CreateOrderBloc>().add(CreateOrderEvent.createOrder(order));
   }
 
-  void _onSuccess(BuildContext context) {
+  void _onSuccess(BuildContext context) async {
     context.read<CartBloc>().add(const CartEvent.clearCart());
-    context.router.replace(const OrderFinishRoute());
+    if (!_isDeliveryType) {
+      final city = await AppConfig.getCity();
+      final pickupPoint = city.pickupAddersses!
+          .firstWhere((e) => e.address == _addressController.text);
+      context.router.replace(OrderFinishRoute(pickupPoint: pickupPoint));
+    } else {
+      context.router.replace(OrderFinishRoute(pickupPoint: null));
+    }
   }
 
   void _onRefreshButtonPressed(BuildContext context) {

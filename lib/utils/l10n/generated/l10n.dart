@@ -370,6 +370,26 @@ class S {
     );
   }
 
+  /// `Построить маршрут`
+  String get create_map_button_text {
+    return Intl.message(
+      'Построить маршрут',
+      name: 'create_map_button_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Сбросить фильтр`
+  String get restore_filters_button_text {
+    return Intl.message(
+      'Сбросить фильтр',
+      name: 'restore_filters_button_text',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Произошла непредвиденная ошибка.\nПожалуйста, попробуйте снова`
   String get default_error_text {
     return Intl.message(
@@ -415,6 +435,16 @@ class S {
     return Intl.message(
       'Введите данные',
       name: 'input_error_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Доступных карт не обнаружено`
+  String get no_map_error_text {
+    return Intl.message(
+      'Доступных карт не обнаружено',
+      name: 'no_map_error_text',
       desc: '',
       args: [],
     );

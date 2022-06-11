@@ -31,9 +31,12 @@
     "add_to_cart_button_text": "В корзину",
     "create_order_button_text": "Оформить заказ",
     "confirm_order_button_text": "Заказать",
+    "create_map_button_text": "Построить маршрут",
+    "restore_filters_button_text": "Сбросить фильтр",
     "default_error_text": "Произошла непредвиденная ошибка.\nПожалуйста, попробуйте снова",
     "image_error_text": "Не удалось загрузить картинку",
     "task_error_text": "Не удалось выполнить запрос",
     "item_error_text": "Не удалось получить информацию о товаре",
-    "input_error_text": "Введите данные"
+    "input_error_text": "Введите данные",
+    "no_map_error_text": "Доступных карт не обнаружено"
 }

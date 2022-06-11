@@ -1,23 +1,34 @@
 import 'dart:math';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:farm_market_app/shared/models/pickup_model.dart';
 import 'package:farm_market_app/shared/widgets/background_gradient_widget.dart';
+import 'package:farm_market_app/shared/widgets/buttons/default_button_widget.dart';
 import 'package:farm_market_app/shared/widgets/transparent_appbar.dart';
 import 'package:farm_market_app/utils/l10n/generated/l10n.dart';
 import 'package:farm_market_app/utils/router/router.dart';
 import 'package:farm_market_app/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:map_launcher/map_launcher.dart';
 
 class OrderFinishScreen extends StatefulWidget {
-  const OrderFinishScreen({Key? key}) : super(key: key);
+  const OrderFinishScreen({
+    required this.pickupPoint,
+    Key? key,
+  }) : super(key: key);
+
+  final PickupModel? pickupPoint;
 
   @override
   State<OrderFinishScreen> createState() => _OrderFinishScreenState();
 }
 
 class _OrderFinishScreenState extends State<OrderFinishScreen> {
-  late final String _assetPath;
-  static const _assetsPaths = [
+  late final String _selectedImage;
+
+  static const _closeIcon = 'assets/icons/close.svg';
+  static const _images = [
     'assets/img/order_finish_img_0.png',
     'assets/img/order_finish_img_1.png',
   ];
@@ -26,7 +37,7 @@ class _OrderFinishScreenState extends State<OrderFinishScreen> {
   void initState() {
     super.initState();
     final rnd = Random();
-    _assetPath = _assetsPaths[rnd.nextInt(_assetsPaths.length)];
+    _selectedImage = _images[rnd.nextInt(_images.length)];
   }
 
   @override
@@ -38,11 +49,12 @@ class _OrderFinishScreenState extends State<OrderFinishScreen> {
         child: Column(
           children: [
             TransparentAppBar(
-              action: IconButton(
-                onPressed: () => _onPressed(context),
-                icon: const Icon(
-                  Icons.close,
-                  color: ColorsTheme.textDefaultColor,
+              action: GestureDetector(
+                onTap: () => _onCloseButtonPressed(context),
+                child: SvgPicture.asset(
+                  _closeIcon,
+                  width: kAppBarIconSize,
+                  height: kAppBarIconSize,
                 ),
               ),
             ),
@@ -57,7 +69,7 @@ class _OrderFinishScreenState extends State<OrderFinishScreen> {
                   children: [
                     const SizedBox(),
                     Image.asset(
-                      _assetPath,
+                      _selectedImage,
                       fit: BoxFit.fitWidth,
                     ),
                     Text(
@@ -65,7 +77,14 @@ class _OrderFinishScreenState extends State<OrderFinishScreen> {
                       textAlign: TextAlign.center,
                       style: textTheme.onboardingHeadingTextStyle,
                     ),
-                    const SizedBox(height: 40),
+                    if (widget.pickupPoint != null)
+                      DefaultButton(
+                        onPressed: () => _onCreateMapButtonPressed(),
+                        child: Text(
+                          S.of(context).create_map_button_text,
+                          style: textTheme.defaultButtonTextStyle,
+                        ),
+                      ),
                   ],
                 ),
               ),
@@ -76,7 +95,31 @@ class _OrderFinishScreenState extends State<OrderFinishScreen> {
     );
   }
 
-  void _onPressed(BuildContext context) {
+  void _onCreateMapButtonPressed() async {
+    final maps = await MapLauncher.installedMaps;
+    if (maps.isNotEmpty) {
+      await maps.first.showMarker(
+        coords: Coords(
+          widget.pickupPoint!.latitude.toDouble(),
+          widget.pickupPoint!.longitude.toDouble(),
+        ),
+        title: widget.pickupPoint!.address,
+      );
+    } else {
+      _showErrorSnackbar();
+    }
+  }
+
+  void _showErrorSnackbar() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(S.of(context).no_map_error_text),
+        duration: const Duration(seconds: 1),
+      ),
+    );
+  }
+
+  void _onCloseButtonPressed(BuildContext context) {
     context.router.replaceAll([const CatalogRoute()]);
   }
 }

@@ -4,12 +4,13 @@ import 'package:farm_market_app/screens/item_overview/widgets/images_block/image
 import 'package:farm_market_app/screens/item_overview/widgets/item_overview_title.dart';
 import 'package:farm_market_app/screens/item_overview/widgets/price_block/item_no_sale_widget.dart';
 import 'package:farm_market_app/screens/item_overview/widgets/price_block/price_block_widget.dart';
+import 'package:farm_market_app/screens/item_overview/widgets/price_block/price_selection/item_price_select_widget.dart';
 import 'package:farm_market_app/shared/models/category_model.dart';
 import 'package:farm_market_app/shared/models/item_model.dart';
 import 'package:farm_market_app/shared/widgets/background_gradient_widget.dart';
 import 'package:farm_market_app/shared/widgets/buttons/cart_button_widget.dart';
+import 'package:farm_market_app/shared/widgets/buttons/custom_back_button.dart';
 import 'package:farm_market_app/shared/widgets/transparent_appbar.dart';
-import 'package:farm_market_app/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,29 +42,35 @@ class ItemOverviewScreen extends StatelessWidget {
             child: Column(
               children: [
                 const TransparentAppBar(
-                  leading: BackButton(color: ColorsTheme.textDefaultColor),
+                  leading: CustomBackButton(),
                   action: CartButton(),
                 ),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Column(
-                      children: const [
-                        ImagesBlockWidget(),
-                        SizedBox(height: 40),
-                        ItemOverviewTitle(),
-                        DescriptionBlockWidget(),
+                      children: [
+                        const ImagesBlockWidget(),
+                        const SizedBox(height: 40),
+                        const ItemOverviewTitle(),
+                        if (_onSale)
+                          ItemPriceSelectWidget(prices: item.prices!),
+                        const DescriptionBlockWidget(),
+                        if (_onSale) const PriceBlockWidget(),
+                        if (!_onSale) const ItemNoSaleWidget(),
                       ],
                     ),
                   ),
                 ),
-                if (item.prices?.firstOrNull != null) const PriceBlockWidget(),
-                if (item.prices?.firstOrNull == null) const ItemNoSaleWidget(),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  bool get _onSale {
+    return item.prices?.firstOrNull != null;
   }
 
   bool get _hasDescriptionOrComposition {

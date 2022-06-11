@@ -1,5 +1,6 @@
 import 'package:farm_market_app/screens/catalog/blocs/items_bloc/items_bloc.dart';
 import 'package:farm_market_app/screens/catalog/widgets/items_list/item_tile_widget.dart';
+import 'package:farm_market_app/screens/catalog/widgets/items_list/items_list_category_title.dart';
 import 'package:farm_market_app/shared/widgets/error_widget.dart';
 import 'package:farm_market_app/shared/widgets/loading_indicator_widget.dart';
 import 'package:farm_market_app/utils/l10n/generated/l10n.dart';
@@ -25,11 +26,7 @@ class CatalogItemsListView extends StatelessWidget {
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  if (selectedCategory != null)
-                    Text(
-                      selectedCategory.name ?? S.of(context).no_name,
-                      style: textTheme.catalogCategoryStyle,
-                    ),
+                  ItemsListCategoryTitle(categories: selectedCategory),
                   Container(
                     alignment: Alignment.centerRight,
                     child: Text(
@@ -38,7 +35,7 @@ class CatalogItemsListView extends StatelessWidget {
                       style: textTheme.catalogItemsCountStyle,
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 5),
                   items.isEmpty
                       ? Padding(
                           padding: const EdgeInsets.symmetric(
