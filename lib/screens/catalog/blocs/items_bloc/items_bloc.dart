@@ -10,15 +10,13 @@ part 'items_bloc.freezed.dart';
 
 class ItemsBloc extends Bloc<ItemsEvent, ItemsState> {
   ItemsBloc({required this.database}) : super(const _Initial()) {
-    on<_Started>(_onStarted);
-    on<_Refresh>(_refresh);
+    on<_LoadData>(_loadData);
+    // on<_Refresh>(_refresh);
   }
 
   final IDatabase database;
 
-  void _onStarted(_Started event, Emitter<ItemsState> emit) async {
-    event.selectedCategory;
-
+  void _loadData(_LoadData event, Emitter<ItemsState> emit) async {
     emit(const ItemsState.loading());
     ItemsState.lastSelectedCategory = event.selectedCategory;
     try {
@@ -31,17 +29,17 @@ class ItemsBloc extends Bloc<ItemsEvent, ItemsState> {
     }
   }
 
-  void _refresh(_Refresh event, Emitter<ItemsState> emit) async {
-    emit(const ItemsState.loading());
-    try {
-      final lastCategory = ItemsState.lastSelectedCategory.lastOrNull;
-      final items = await database.getItems(categoryId: lastCategory?.uid);
-      emit(ItemsState.loaded(items, ItemsState.lastSelectedCategory));
-    } on Object catch (error, stackTrace) {
-      addError(error, stackTrace);
-      emit(const ItemsState.error());
-    }
-  }
+  // void _refresh(_Refresh event, Emitter<ItemsState> emit) async {
+  //   emit(const ItemsState.loading());
+  //   try {
+  //     final lastCategory = ItemsState.lastSelectedCategory?.lastOrNull;
+  //     final items = await database.getItems(categoryId: lastCategory?.uid);
+  //     emit(ItemsState.loaded(items, ItemsState.lastSelectedCategory));
+  //   } on Object catch (error, stackTrace) {
+  //     addError(error, stackTrace);
+  //     emit(const ItemsState.error());
+  //   }
+  // }
 }
 
 extension<T> on List<T> {

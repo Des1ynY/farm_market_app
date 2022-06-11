@@ -48,9 +48,10 @@ class CategoryButton extends StatelessWidget {
   void _onPressed(BuildContext context) {
     if (category.children == null || category.children!.isEmpty) {
       _previousCategories.add(category);
+      final selectedCategory = List<CategoryModel>.from(_previousCategories);
       context
           .read<ItemsBloc>()
-          .add(ItemsEvent.started(selectedCategory: _previousCategories));
+          .add(ItemsEvent.loadData(selectedCategory: selectedCategory));
       _previousCategories.clear();
       context.router.pop();
     } else {

@@ -46,7 +46,7 @@ class _DeliveryAddressFieldState extends State<DeliveryAddressField> {
       label: '${S.of(context).enter_address}*',
       controller: widget.controller,
       focusNode: widget.focusNode,
-      onTap: () => _onTap(context),
+      // onTap: () => _onTap(context),
       validator: (value) => _validator(value, context),
       onFieldSubmitted: (value) => _onFieldSubmitted(value, context),
     );

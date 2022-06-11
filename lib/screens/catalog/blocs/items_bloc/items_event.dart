@@ -2,10 +2,9 @@ part of 'items_bloc.dart';
 
 @freezed
 class ItemsEvent with _$ItemsEvent {
-  // FIXME: return empty list
-  const factory ItemsEvent.started({
+  const factory ItemsEvent.loadData({
     required List<CategoryModel> selectedCategory,
-  }) = _Started;
+  }) = _LoadData;
 
-  const factory ItemsEvent.refresh() = _Refresh;
+  //const factory ItemsEvent.refresh() = _Refresh;
 }

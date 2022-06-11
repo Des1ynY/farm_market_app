@@ -16,43 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ItemsEvent {
+  List<CategoryModel> get selectedCategory =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CategoryModel> selectedCategory) started,
-    required TResult Function() refresh,
+    required TResult Function(List<CategoryModel> selectedCategory) loadData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<CategoryModel> selectedCategory)? started,
-    TResult Function()? refresh,
+    TResult Function(List<CategoryModel> selectedCategory)? loadData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CategoryModel> selectedCategory)? started,
-    TResult Function()? refresh,
+    TResult Function(List<CategoryModel> selectedCategory)? loadData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_Refresh value) refresh,
+    required TResult Function(_LoadData value) loadData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Refresh value)? refresh,
+    TResult Function(_LoadData value)? loadData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Refresh value)? refresh,
+    TResult Function(_LoadData value)? loadData,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ItemsEventCopyWith<ItemsEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,6 +61,7 @@ abstract class $ItemsEventCopyWith<$Res> {
   factory $ItemsEventCopyWith(
           ItemsEvent value, $Res Function(ItemsEvent) then) =
       _$ItemsEventCopyWithImpl<$Res>;
+  $Res call({List<CategoryModel> selectedCategory});
 }
 
 /// @nodoc
@@ -70,30 +71,44 @@ class _$ItemsEventCopyWithImpl<$Res> implements $ItemsEventCopyWith<$Res> {
   final ItemsEvent _value;
   // ignore: unused_field
   final $Res Function(ItemsEvent) _then;
-}
-
-/// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
-  $Res call({List<CategoryModel> selectedCategory});
-}
-
-/// @nodoc
-class __$$_StartedCopyWithImpl<$Res> extends _$ItemsEventCopyWithImpl<$Res>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
-      : super(_value, (v) => _then(v as _$_Started));
-
-  @override
-  _$_Started get _value => super._value as _$_Started;
 
   @override
   $Res call({
     Object? selectedCategory = freezed,
   }) {
-    return _then(_$_Started(
+    return _then(_value.copyWith(
+      selectedCategory: selectedCategory == freezed
+          ? _value.selectedCategory
+          : selectedCategory // ignore: cast_nullable_to_non_nullable
+              as List<CategoryModel>,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_LoadDataCopyWith<$Res> implements $ItemsEventCopyWith<$Res> {
+  factory _$$_LoadDataCopyWith(
+          _$_LoadData value, $Res Function(_$_LoadData) then) =
+      __$$_LoadDataCopyWithImpl<$Res>;
+  @override
+  $Res call({List<CategoryModel> selectedCategory});
+}
+
+/// @nodoc
+class __$$_LoadDataCopyWithImpl<$Res> extends _$ItemsEventCopyWithImpl<$Res>
+    implements _$$_LoadDataCopyWith<$Res> {
+  __$$_LoadDataCopyWithImpl(
+      _$_LoadData _value, $Res Function(_$_LoadData) _then)
+      : super(_value, (v) => _then(v as _$_LoadData));
+
+  @override
+  _$_LoadData get _value => super._value as _$_LoadData;
+
+  @override
+  $Res call({
+    Object? selectedCategory = freezed,
+  }) {
+    return _then(_$_LoadData(
       selectedCategory: selectedCategory == freezed
           ? _value._selectedCategory
           : selectedCategory // ignore: cast_nullable_to_non_nullable
@@ -104,8 +119,8 @@ class __$$_StartedCopyWithImpl<$Res> extends _$ItemsEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started({required final List<CategoryModel> selectedCategory})
+class _$_LoadData implements _LoadData {
+  const _$_LoadData({required final List<CategoryModel> selectedCategory})
       : _selectedCategory = selectedCategory;
 
   final List<CategoryModel> _selectedCategory;
@@ -117,14 +132,14 @@ class _$_Started implements _Started {
 
   @override
   String toString() {
-    return 'ItemsEvent.started(selectedCategory: $selectedCategory)';
+    return 'ItemsEvent.loadData(selectedCategory: $selectedCategory)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Started &&
+            other is _$_LoadData &&
             const DeepCollectionEquality()
                 .equals(other._selectedCategory, _selectedCategory));
   }
@@ -135,36 +150,33 @@ class _$_Started implements _Started {
 
   @JsonKey(ignore: true)
   @override
-  _$$_StartedCopyWith<_$_Started> get copyWith =>
-      __$$_StartedCopyWithImpl<_$_Started>(this, _$identity);
+  _$$_LoadDataCopyWith<_$_LoadData> get copyWith =>
+      __$$_LoadDataCopyWithImpl<_$_LoadData>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CategoryModel> selectedCategory) started,
-    required TResult Function() refresh,
+    required TResult Function(List<CategoryModel> selectedCategory) loadData,
   }) {
-    return started(selectedCategory);
+    return loadData(selectedCategory);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<CategoryModel> selectedCategory)? started,
-    TResult Function()? refresh,
+    TResult Function(List<CategoryModel> selectedCategory)? loadData,
   }) {
-    return started?.call(selectedCategory);
+    return loadData?.call(selectedCategory);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CategoryModel> selectedCategory)? started,
-    TResult Function()? refresh,
+    TResult Function(List<CategoryModel> selectedCategory)? loadData,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(selectedCategory);
+    if (loadData != null) {
+      return loadData(selectedCategory);
     }
     return orElse();
   }
@@ -172,147 +184,43 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_Refresh value) refresh,
+    required TResult Function(_LoadData value) loadData,
   }) {
-    return started(this);
+    return loadData(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Refresh value)? refresh,
+    TResult Function(_LoadData value)? loadData,
   }) {
-    return started?.call(this);
+    return loadData?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Refresh value)? refresh,
+    TResult Function(_LoadData value)? loadData,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (loadData != null) {
+      return loadData(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements ItemsEvent {
-  const factory _Started(
-      {required final List<CategoryModel> selectedCategory}) = _$_Started;
+abstract class _LoadData implements ItemsEvent {
+  const factory _LoadData(
+      {required final List<CategoryModel> selectedCategory}) = _$_LoadData;
 
+  @override
   List<CategoryModel> get selectedCategory =>
       throw _privateConstructorUsedError;
+  @override
   @JsonKey(ignore: true)
-  _$$_StartedCopyWith<_$_Started> get copyWith =>
+  _$$_LoadDataCopyWith<_$_LoadData> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_RefreshCopyWith<$Res> {
-  factory _$$_RefreshCopyWith(
-          _$_Refresh value, $Res Function(_$_Refresh) then) =
-      __$$_RefreshCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_RefreshCopyWithImpl<$Res> extends _$ItemsEventCopyWithImpl<$Res>
-    implements _$$_RefreshCopyWith<$Res> {
-  __$$_RefreshCopyWithImpl(_$_Refresh _value, $Res Function(_$_Refresh) _then)
-      : super(_value, (v) => _then(v as _$_Refresh));
-
-  @override
-  _$_Refresh get _value => super._value as _$_Refresh;
-}
-
-/// @nodoc
-
-class _$_Refresh implements _Refresh {
-  const _$_Refresh();
-
-  @override
-  String toString() {
-    return 'ItemsEvent.refresh()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Refresh);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<CategoryModel> selectedCategory) started,
-    required TResult Function() refresh,
-  }) {
-    return refresh();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<CategoryModel> selectedCategory)? started,
-    TResult Function()? refresh,
-  }) {
-    return refresh?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CategoryModel> selectedCategory)? started,
-    TResult Function()? refresh,
-    required TResult orElse(),
-  }) {
-    if (refresh != null) {
-      return refresh();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_Refresh value) refresh,
-  }) {
-    return refresh(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Refresh value)? refresh,
-  }) {
-    return refresh?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Refresh value)? refresh,
-    required TResult orElse(),
-  }) {
-    if (refresh != null) {
-      return refresh(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Refresh implements ItemsEvent {
-  const factory _Refresh() = _$_Refresh;
 }
 
 /// @nodoc
@@ -322,7 +230,7 @@ mixin _$ItemsState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            List<ItemModel> items, List<CategoryModel> selectedCategory)
+            List<ItemModel> items, List<CategoryModel>? selectedCategory)
         loaded,
     required TResult Function() error,
   }) =>
@@ -332,7 +240,7 @@ mixin _$ItemsState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            List<ItemModel> items, List<CategoryModel> selectedCategory)?
+            List<ItemModel> items, List<CategoryModel>? selectedCategory)?
         loaded,
     TResult Function()? error,
   }) =>
@@ -342,7 +250,7 @@ mixin _$ItemsState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            List<ItemModel> items, List<CategoryModel> selectedCategory)?
+            List<ItemModel> items, List<CategoryModel>? selectedCategory)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),
@@ -433,7 +341,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            List<ItemModel> items, List<CategoryModel> selectedCategory)
+            List<ItemModel> items, List<CategoryModel>? selectedCategory)
         loaded,
     required TResult Function() error,
   }) {
@@ -446,7 +354,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            List<ItemModel> items, List<CategoryModel> selectedCategory)?
+            List<ItemModel> items, List<CategoryModel>? selectedCategory)?
         loaded,
     TResult Function()? error,
   }) {
@@ -459,7 +367,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            List<ItemModel> items, List<CategoryModel> selectedCategory)?
+            List<ItemModel> items, List<CategoryModel>? selectedCategory)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),
@@ -554,7 +462,7 @@ class _$_Loading implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            List<ItemModel> items, List<CategoryModel> selectedCategory)
+            List<ItemModel> items, List<CategoryModel>? selectedCategory)
         loaded,
     required TResult Function() error,
   }) {
@@ -567,7 +475,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            List<ItemModel> items, List<CategoryModel> selectedCategory)?
+            List<ItemModel> items, List<CategoryModel>? selectedCategory)?
         loaded,
     TResult Function()? error,
   }) {
@@ -580,7 +488,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            List<ItemModel> items, List<CategoryModel> selectedCategory)?
+            List<ItemModel> items, List<CategoryModel>? selectedCategory)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),
@@ -637,7 +545,7 @@ abstract class _Loading implements ItemsState {
 abstract class _$$_LoadedCopyWith<$Res> {
   factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
       __$$_LoadedCopyWithImpl<$Res>;
-  $Res call({List<ItemModel> items, List<CategoryModel> selectedCategory});
+  $Res call({List<ItemModel> items, List<CategoryModel>? selectedCategory});
 }
 
 /// @nodoc
@@ -662,7 +570,7 @@ class __$$_LoadedCopyWithImpl<$Res> extends _$ItemsStateCopyWithImpl<$Res>
       selectedCategory == freezed
           ? _value._selectedCategory
           : selectedCategory // ignore: cast_nullable_to_non_nullable
-              as List<CategoryModel>,
+              as List<CategoryModel>?,
     ));
   }
 }
@@ -671,7 +579,7 @@ class __$$_LoadedCopyWithImpl<$Res> extends _$ItemsStateCopyWithImpl<$Res>
 
 class _$_Loaded implements _Loaded {
   const _$_Loaded(
-      final List<ItemModel> items, final List<CategoryModel> selectedCategory)
+      final List<ItemModel> items, final List<CategoryModel>? selectedCategory)
       : _items = items,
         _selectedCategory = selectedCategory;
 
@@ -682,11 +590,13 @@ class _$_Loaded implements _Loaded {
     return EqualUnmodifiableListView(_items);
   }
 
-  final List<CategoryModel> _selectedCategory;
+  final List<CategoryModel>? _selectedCategory;
   @override
-  List<CategoryModel> get selectedCategory {
+  List<CategoryModel>? get selectedCategory {
+    final value = _selectedCategory;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_selectedCategory);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -721,7 +631,7 @@ class _$_Loaded implements _Loaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            List<ItemModel> items, List<CategoryModel> selectedCategory)
+            List<ItemModel> items, List<CategoryModel>? selectedCategory)
         loaded,
     required TResult Function() error,
   }) {
@@ -734,7 +644,7 @@ class _$_Loaded implements _Loaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            List<ItemModel> items, List<CategoryModel> selectedCategory)?
+            List<ItemModel> items, List<CategoryModel>? selectedCategory)?
         loaded,
     TResult Function()? error,
   }) {
@@ -747,7 +657,7 @@ class _$_Loaded implements _Loaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            List<ItemModel> items, List<CategoryModel> selectedCategory)?
+            List<ItemModel> items, List<CategoryModel>? selectedCategory)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),
@@ -798,10 +708,10 @@ class _$_Loaded implements _Loaded {
 
 abstract class _Loaded implements ItemsState {
   const factory _Loaded(final List<ItemModel> items,
-      final List<CategoryModel> selectedCategory) = _$_Loaded;
+      final List<CategoryModel>? selectedCategory) = _$_Loaded;
 
   List<ItemModel> get items => throw _privateConstructorUsedError;
-  List<CategoryModel> get selectedCategory =>
+  List<CategoryModel>? get selectedCategory =>
       throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
@@ -849,7 +759,7 @@ class _$_Error implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            List<ItemModel> items, List<CategoryModel> selectedCategory)
+            List<ItemModel> items, List<CategoryModel>? selectedCategory)
         loaded,
     required TResult Function() error,
   }) {
@@ -862,7 +772,7 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            List<ItemModel> items, List<CategoryModel> selectedCategory)?
+            List<ItemModel> items, List<CategoryModel>? selectedCategory)?
         loaded,
     TResult Function()? error,
   }) {
@@ -875,7 +785,7 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            List<ItemModel> items, List<CategoryModel> selectedCategory)?
+            List<ItemModel> items, List<CategoryModel>? selectedCategory)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),

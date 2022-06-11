@@ -37,6 +37,7 @@ class _ImagesBlockWidgetState extends State<ImagesBlockWidget> {
             children: [
               SizedBox(
                 width: 90,
+                height: 270,
                 child: ItemImagesListView(images: _item.images!),
               ),
               Expanded(

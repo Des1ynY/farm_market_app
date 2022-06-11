@@ -60,6 +60,8 @@ class CatalogItemsListView extends StatelessWidget {
   }
 
   void _onRefresh(BuildContext context) {
-    context.read<ItemsBloc>().add(const ItemsEvent.refresh());
+    context
+        .read<ItemsBloc>()
+        .add(const ItemsEvent.loadData(selectedCategory: []));
   }
 }

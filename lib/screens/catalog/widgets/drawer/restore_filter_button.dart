@@ -33,7 +33,7 @@ class RestoreFiltersButton extends StatelessWidget {
   void _onPressed(BuildContext context) {
     context
         .read<ItemsBloc>()
-        .add(const ItemsEvent.started(selectedCategory: []));
+        .add(const ItemsEvent.loadData(selectedCategory: []));
     context.router.pop();
   }
 }
