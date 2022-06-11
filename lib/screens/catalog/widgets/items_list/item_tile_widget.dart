@@ -40,7 +40,7 @@ class _ItemTileState extends State<ItemTile> {
       onTap: () => _onPressed(context),
       child: Container(
         width: (MediaQuery.of(context).size.width - paddings) / 2,
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(19),
@@ -54,6 +54,7 @@ class _ItemTileState extends State<ItemTile> {
               ItemImageWidget(
                 imageUrl: widget.item.images!.first,
                 height: 115,
+                fit: BoxFit.cover,
                 borderRadius: BorderRadius.circular(9),
               ),
             const SizedBox(height: 5),

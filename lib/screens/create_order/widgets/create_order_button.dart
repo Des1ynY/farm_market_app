@@ -26,7 +26,7 @@ class CreateOrderButton extends StatelessWidget {
           return DefaultButton(
             onPressed: isLoading ? null : onPressed,
             child: isLoading
-                ? LoadingIndicator()
+                ? const LoadingIndicator()
                 : Text(
                     S.of(context).confirm_order_button_text,
                     style: Theme.of(context).textTheme.defaultButtonTextStyle,

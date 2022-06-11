@@ -24,7 +24,7 @@ class CatalogDrawer extends StatelessWidget {
                 child: BlocBuilder<CategoriesBloc, CategoriesState>(
                   builder: (context, state) {
                     return state.maybeWhen(
-                      orElse: () => LoadingIndicator(),
+                      orElse: () => const LoadingIndicator(),
                       error: () => Padding(
                         padding: kPageDefaultPadding,
                         child: CustomErrorWidget(

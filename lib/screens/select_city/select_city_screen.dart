@@ -82,7 +82,7 @@ class _SelectCityScreenState extends State<SelectCityScreen> {
                       return DefaultButton(
                         onPressed: isLoading ? null : () => _onPressed(context),
                         child: isLoading
-                            ? LoadingIndicator()
+                            ? const LoadingIndicator()
                             : Text(
                                 S.of(context).next_button_text,
                                 style: textTheme.defaultButtonTextStyle,

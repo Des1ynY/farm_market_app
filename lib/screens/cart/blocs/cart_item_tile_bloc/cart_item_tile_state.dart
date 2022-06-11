@@ -7,7 +7,8 @@ class CartItemTileState with _$CartItemTileState {
   const factory CartItemTileState.loading() = _Loading;
 
   const factory CartItemTileState.loaded(
-      ItemModel item, CategoryModel? itemCategory) = _Loaded;
+    Map<ItemInOrderModel, MapEntry<ItemModel, CategoryModel?>> data,
+  ) = _Loaded;
 
   const factory CartItemTileState.error() = _Error;
 }

@@ -6,23 +6,9 @@ import 'package:farm_market_app/utils/l10n/generated/l10n.dart';
 import 'package:farm_market_app/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-class CatalogItemsListView extends StatefulWidget {
+class CatalogItemsListView extends StatelessWidget {
   const CatalogItemsListView({Key? key}) : super(key: key);
-
-  @override
-  State<CatalogItemsListView> createState() => _CatalogItemsListViewState();
-}
-
-class _CatalogItemsListViewState extends State<CatalogItemsListView> {
-  late final RefreshController _refreshController;
-
-  @override
-  void initState() {
-    super.initState();
-    _refreshController = RefreshController();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,48 +17,43 @@ class _CatalogItemsListViewState extends State<CatalogItemsListView> {
     return BlocBuilder<ItemsBloc, ItemsState>(
       builder: (context, state) {
         return state.maybeWhen(
-          orElse: () => LoadingIndicator(),
+          orElse: () => const LoadingIndicator(),
           error: () => CustomErrorWidget(
             onRefreshButtonPressed: () => _onRefresh(context),
           ),
           loaded: (items, selectedCategory) {
-            return SmartRefresher(
-              controller: _refreshController,
-              // header: LoadingIndicator.pullToRefresh(),
-              onRefresh: () => _onRefresh(context),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    if (selectedCategory != null)
-                      Text(
-                        selectedCategory.name ?? S.of(context).no_name,
-                        style: textTheme.catalogCategoryStyle,
-                      ),
-                    Container(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        '${S.of(context).items_count}: ${items.length}',
-                        textAlign: TextAlign.right,
-                        style: textTheme.catalogItemsCountStyle,
-                      ),
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  if (selectedCategory != null)
+                    Text(
+                      selectedCategory.name ?? S.of(context).no_name,
+                      style: textTheme.catalogCategoryStyle,
                     ),
-                    const SizedBox(height: 20),
-                    items.isEmpty
-                        ? Padding(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 40,
-                              horizontal: 20,
-                            ),
-                            child: Text(S.of(context).no_items_available),
-                          )
-                        : Wrap(
-                            spacing: 15,
-                            runSpacing: 16,
-                            children:
-                                items.map((e) => ItemTile(item: e)).toList(),
+                  Container(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      '${S.of(context).items_count}: ${items.length}',
+                      textAlign: TextAlign.right,
+                      style: textTheme.catalogItemsCountStyle,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  items.isEmpty
+                      ? Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 40,
+                            horizontal: 20,
                           ),
-                  ],
-                ),
+                          child: Text(S.of(context).no_items_available),
+                        )
+                      : Wrap(
+                          spacing: 15,
+                          runSpacing: 16,
+                          children:
+                              items.map((e) => ItemTile(item: e)).toList(),
+                        ),
+                ],
               ),
             );
           },

@@ -60,7 +60,7 @@ class _ItemAddToCartWidgetState extends State<ItemAddToCartWidget> {
                           S.of(context).add_to_cart_button_text,
                           style: textTheme.defaultButtonTextStyle,
                         )
-                      : LoadingIndicator(),
+                      : const LoadingIndicator(),
                 );
               },
             ),

@@ -3,7 +3,6 @@ import 'package:farm_market_app/shared/blocs/cart_bloc/cart_bloc.dart';
 import 'package:farm_market_app/screens/item_overview/widgets/price_block/in_cart/cart_decrease_button.dart';
 import 'package:farm_market_app/shared/models/item_in_order_model.dart';
 import 'package:farm_market_app/shared/widgets/item_parts/item_price_text_widget.dart';
-import 'package:farm_market_app/shared/widgets/loading_indicator_widget.dart';
 import 'package:farm_market_app/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

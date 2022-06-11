@@ -22,7 +22,7 @@ class CartButton extends StatelessWidget {
           ),
           badgeContent: state.maybeWhen(
             orElse: () => null,
-            loading: () => SizedBox(
+            loading: () => const SizedBox(
               width: 10,
               height: 10,
               child: LoadingIndicator(),

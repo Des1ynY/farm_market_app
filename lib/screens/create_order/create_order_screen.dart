@@ -82,7 +82,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
                   child: BlocBuilder<CartBloc, CartState>(
                     builder: (context, state) {
                       return state.maybeWhen(
-                        orElse: () => LoadingIndicator(),
+                        orElse: () => const LoadingIndicator(),
                         error: () => CustomErrorWidget(
                           errorText: S.of(context).default_error_text,
                           onRefreshButtonPressed: () =>

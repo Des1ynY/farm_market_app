@@ -116,6 +116,8 @@ class FirebaseDatabase extends IDatabase {
   @override
   Future<void> setNewOrder(OrderModel order) async {
     try {
+      // jsonEncode нужен для корректного добавления в Firebase
+      // Без него List<ItemInOrderModel> в OrderModel дает ошибку парсинга
       final json = jsonEncode(order.toJson());
       await _db.collection(_orders).doc(order.uid).set(jsonDecode(json));
     } on Object {

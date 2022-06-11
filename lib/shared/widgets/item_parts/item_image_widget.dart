@@ -31,7 +31,7 @@ class ItemImageWidget extends StatelessWidget {
         errorWidget: (_, __, ___) => Center(
           child: Text(S.of(context).image_error_text),
         ),
-        progressIndicatorBuilder: (_, __, ___) => LoadingIndicator(),
+        progressIndicatorBuilder: (_, __, ___) => const LoadingIndicator(),
       ),
     );
   }
