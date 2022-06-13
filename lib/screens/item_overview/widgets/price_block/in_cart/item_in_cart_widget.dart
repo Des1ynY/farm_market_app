@@ -17,40 +17,37 @@ class ItemInCartWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            flex: 2,
-            child: ItemPriceTextWidget(
-              price: inCartItem.selectedPrice.price * inCartItem.count,
-            ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          flex: 2,
+          child: ItemPriceTextWidget(
+            price: inCartItem.selectedPrice.price * inCartItem.count,
           ),
-          const SizedBox(width: 10),
-          BlocBuilder<CartBloc, CartState>(
-            builder: (context, state) {
-              return Expanded(
-                flex: 3,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    CartItemDecreaseCountButton(inCartItem: inCartItem),
-                    const SizedBox(width: 5),
-                    Text(
-                      inCartItem.count.toString(),
-                      style: Theme.of(context).textTheme.itemPriceStyle,
-                    ),
-                    const SizedBox(width: 5),
-                    CartItemIncreaseCountButton(inCartItem: inCartItem),
-                  ],
-                ),
-              );
-            },
-          ),
-        ],
-      ),
+        ),
+        const SizedBox(width: 10),
+        BlocBuilder<CartBloc, CartState>(
+          builder: (context, state) {
+            return Expanded(
+              flex: 3,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  CartItemDecreaseCountButton(inCartItem: inCartItem),
+                  const SizedBox(width: 5),
+                  Text(
+                    inCartItem.count.toString(),
+                    style: Theme.of(context).textTheme.itemPriceStyle,
+                  ),
+                  const SizedBox(width: 5),
+                  CartItemIncreaseCountButton(inCartItem: inCartItem),
+                ],
+              ),
+            );
+          },
+        ),
+      ],
     );
   }
 }

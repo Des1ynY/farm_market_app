@@ -48,7 +48,7 @@ class _DescriptionBlockWidgetState extends State<DescriptionBlockWidget>
                 hasDescription: _hasDescription,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
+                padding: const EdgeInsets.only(top: 20),
                 child: Builder(
                   builder: (context) {
                     if (_tabsCount == 1) {

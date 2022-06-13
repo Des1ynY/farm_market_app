@@ -36,37 +36,34 @@ class _ItemAddToCartWidgetState extends State<ItemAddToCartWidget> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-      child: Row(
-        children: [
-          Expanded(
-            flex: 2,
-            child: ItemPriceTextWidget(price: widget.selectedPrice.price),
+    return Row(
+      children: [
+        Expanded(
+          flex: 2,
+          child: ItemPriceTextWidget(price: widget.selectedPrice.price),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          flex: 3,
+          child: BlocBuilder<CartBloc, CartState>(
+            builder: (context, state) {
+              final cartLoaded = state.maybeWhen(
+                orElse: () => false,
+                loaded: (items, city) => true,
+              );
+              return DefaultButton(
+                onPressed: cartLoaded ? () => _onPressed(context) : null,
+                child: cartLoaded
+                    ? Text(
+                        S.of(context).add_to_cart_button_text,
+                        style: textTheme.defaultButtonTextStyle,
+                      )
+                    : const LoadingIndicator(),
+              );
+            },
           ),
-          const SizedBox(width: 10),
-          Expanded(
-            flex: 3,
-            child: BlocBuilder<CartBloc, CartState>(
-              builder: (context, state) {
-                final cartLoaded = state.maybeWhen(
-                  orElse: () => false,
-                  loaded: (items, city) => true,
-                );
-                return DefaultButton(
-                  onPressed: cartLoaded ? () => _onPressed(context) : null,
-                  child: cartLoaded
-                      ? Text(
-                          S.of(context).add_to_cart_button_text,
-                          style: textTheme.defaultButtonTextStyle,
-                        )
-                      : const LoadingIndicator(),
-                );
-              },
-            ),
-          )
-        ],
-      ),
+        )
+      ],
     );
   }
 

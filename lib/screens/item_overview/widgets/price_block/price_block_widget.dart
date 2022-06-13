@@ -1,6 +1,7 @@
 import 'package:farm_market_app/screens/item_overview/blocs/item_bloc/item_bloc.dart';
 import 'package:farm_market_app/screens/item_overview/widgets/price_block/in_cart/item_in_cart_widget.dart';
 import 'package:farm_market_app/screens/item_overview/widgets/price_block/item_add_to_cart_widget.dart';
+import 'package:farm_market_app/screens/item_overview/widgets/price_block/order_item_button.dart';
 import 'package:farm_market_app/shared/blocs/add_to_cart_bloc/add_to_cart_bloc.dart';
 import 'package:farm_market_app/shared/blocs/cart_bloc/cart_bloc.dart';
 import 'package:farm_market_app/shared/models/item_in_order_model.dart';
@@ -33,22 +34,11 @@ class _PriceBlockWidgetState extends State<PriceBlockWidget> {
   Widget build(BuildContext context) {
     return BlocBuilder<ItemBloc, ItemState>(
       builder: (context, itemState) {
-        final inCartId = getItemInOrderId(itemState.selectedPrice!);
-
         return BlocListener<AddToCartBloc, AddToCartState>(
           listener: (context, taskState) {
             taskState.whenOrNull(
-              success: () =>
-                  context.read<CartBloc>().add(const CartEvent.refresh()),
-              error: () {
-                context.read<CartBloc>().add(const CartEvent.refresh());
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(S.of(context).task_error_text),
-                    duration: const Duration(seconds: 1),
-                  ),
-                );
-              },
+              success: () => _onSuccess(context),
+              error: () => _onError(context),
             );
           },
           child: BlocBuilder<CartBloc, CartState>(
@@ -56,22 +46,42 @@ class _PriceBlockWidgetState extends State<PriceBlockWidget> {
               return cartState.maybeWhen(
                 orElse: () => _lastWidget,
                 loaded: (items, city) {
+                  final price = itemState.selectedPrice!;
+                  final inCartId = getItemInOrderId(price);
                   final inCart = items.containsKey(inCartId);
-
-                  final widget = inCart
-                      ? ItemInCartWidget(inCartItem: items[inCartId]!)
-                      : ItemAddToCartWidget(
-                          selectedPrice: itemState.selectedPrice!,
-                        );
-                  _lastWidget = widget;
-
-                  return widget;
+                  _lastWidget = Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      children: [
+                        inCart
+                            ? ItemInCartWidget(inCartItem: items[inCartId]!)
+                            : ItemAddToCartWidget(selectedPrice: price),
+                        const SizedBox(height: 15),
+                        OrderItemButton(inCart: inCart),
+                      ],
+                    ),
+                  );
+                  return _lastWidget;
                 },
               );
             },
           ),
         );
       },
+    );
+  }
+
+  void _onSuccess(BuildContext context) {
+    context.read<CartBloc>().add(const CartEvent.refresh());
+  }
+
+  void _onError(BuildContext context) {
+    context.read<CartBloc>().add(const CartEvent.refresh());
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(S.of(context).task_error_text),
+        duration: const Duration(seconds: 1),
+      ),
     );
   }
 

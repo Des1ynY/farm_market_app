@@ -22,7 +22,6 @@ class _ImagesBlockWidgetState extends State<ImagesBlockWidget> {
   void initState() {
     super.initState();
     _item = RepositoryProvider.of<ItemModel>(context);
-    context.read<ItemModel>();
   }
 
   @override
@@ -43,10 +42,7 @@ class _ImagesBlockWidgetState extends State<ImagesBlockWidget> {
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    border: Border.all(
-                      color: ColorsTheme.stokeColor,
-                      width: 1,
-                    ),
+                    border: Border.all(color: ColorsTheme.stokeColor, width: 1),
                     borderRadius: const BorderRadius.only(
                       topLeft: _imageBorderRadius,
                       bottomLeft: _imageBorderRadius,
@@ -54,6 +50,9 @@ class _ImagesBlockWidgetState extends State<ImagesBlockWidget> {
                   ),
                   child: ItemImageWidget(
                     imageUrl: state.selectedImage!,
+                    fit: BoxFit.cover,
+                    height: 305,
+                    width: MediaQuery.of(context).size.width - 90,
                     borderRadius: const BorderRadius.only(
                       topLeft: _imageBorderRadius,
                       bottomLeft: _imageBorderRadius,

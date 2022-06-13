@@ -29,6 +29,7 @@ class _PickupPointSelectWidgetState extends State<PickupPointSelectWidget> {
   @override
   void initState() {
     super.initState();
+    widget.controller.text = widget.addresses.first.address;
     _selectedPoint = widget.addresses.first;
     _mapController = MapController();
   }

@@ -50,17 +50,17 @@ class ItemOverviewScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         const ImagesBlockWidget(),
-                        const SizedBox(height: 40),
+                        const SizedBox(height: 30),
                         const ItemOverviewTitle(),
                         if (_onSale)
                           ItemPriceSelectWidget(prices: item.prices!),
                         const DescriptionBlockWidget(),
-                        if (_onSale) const PriceBlockWidget(),
-                        if (!_onSale) const ItemNoSaleWidget(),
                       ],
                     ),
                   ),
                 ),
+                if (_onSale) const PriceBlockWidget(),
+                if (!_onSale) const ItemNoSaleWidget(),
               ],
             ),
           ),

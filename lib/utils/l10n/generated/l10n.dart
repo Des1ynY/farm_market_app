@@ -390,6 +390,16 @@ class S {
     );
   }
 
+  /// `Заказать`
+  String get order_item_button_text {
+    return Intl.message(
+      'Заказать',
+      name: 'order_item_button_text',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Произошла непредвиденная ошибка.\nПожалуйста, попробуйте снова`
   String get default_error_text {
     return Intl.message(

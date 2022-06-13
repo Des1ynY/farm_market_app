@@ -74,6 +74,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Proin et"),
         "order_finish_text":
             MessageLookupByLibrary.simpleMessage("Заказ успешно оформлен"),
+        "order_item_button_text":
+            MessageLookupByLibrary.simpleMessage("Заказать"),
         "overall_price": MessageLookupByLibrary.simpleMessage("Итого"),
         "pickup": MessageLookupByLibrary.simpleMessage("Самовывоз"),
         "refresh_button_text": MessageLookupByLibrary.simpleMessage("Обновить"),

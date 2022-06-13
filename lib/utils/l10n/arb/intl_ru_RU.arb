@@ -33,6 +33,7 @@
     "confirm_order_button_text": "Заказать",
     "create_map_button_text": "Построить маршрут",
     "restore_filters_button_text": "Сбросить фильтр",
+    "order_item_button_text": "Заказать",
     "default_error_text": "Произошла непредвиденная ошибка.\nПожалуйста, попробуйте снова",
     "image_error_text": "Не удалось загрузить картинку",
     "task_error_text": "Не удалось выполнить запрос",
