@@ -17,7 +17,7 @@ class ItemPriceTextWidget extends StatelessWidget {
 
     return RichText(
       text: TextSpan(
-        text: '\$${prices.first}.',
+        text: '$kCurrencyChar${prices.first}.',
         style: Theme.of(context)
             .textTheme
             .itemPriceStyle

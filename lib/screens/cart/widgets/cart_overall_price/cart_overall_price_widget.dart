@@ -19,7 +19,7 @@ class CartOverallPriceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final deliveryPrice = cityData.deliveryPrice?.toDouble() ?? 0.0;
+    //final deliveryPrice = cityData.deliveryPrice?.toDouble() ?? 0.0;
     final double itemsPrice = items
         .map((e) => e.selectedPrice.price * e.count)
         .fold(0.0, (prev, e) => prev + e);
@@ -33,18 +33,18 @@ class CartOverallPriceWidget extends StatelessWidget {
       ),
       child: Column(
         children: [
-          CartOverallPriceTextRow(
-            caption: S.of(context).summ_price,
-            price: itemsPrice,
-          ),
-          if (cityData.hasDelivery)
-            CartOverallPriceTextRow(
-              caption: S.of(context).delivery_price,
-              price: deliveryPrice,
-            ),
+          // CartOverallPriceTextRow(
+          //   caption: S.of(context).summ_price,
+          //   price: itemsPrice,
+          // ),
+          // if (cityData.hasDelivery)
+          //   CartOverallPriceTextRow(
+          //     caption: S.of(context).delivery_price,
+          //     price: deliveryPrice,
+          //   ),
           CartOverallPriceTextRow(
             caption: S.of(context).overall_price,
-            price: itemsPrice + deliveryPrice,
+            price: itemsPrice, //+ deliveryPrice,
           ),
           const SizedBox(height: 10),
           DefaultButton(
