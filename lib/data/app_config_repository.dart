@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:farm_market_app/shared/models/city_model.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AppConfig {
@@ -43,5 +44,12 @@ class AppConfig {
 
   static Future<void> deleteCityData() async {
     await _configStorage.delete(key: _cityDataKey);
+  }
+
+  static String get googleApiKey {
+    assert(dotenv.isInitialized);
+    assert(dotenv.isEveryDefined(['GOOGLE_API_KEY']));
+
+    return dotenv.get('GOOGLE_API_KEY');
   }
 }

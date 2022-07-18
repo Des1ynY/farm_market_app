@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:farm_market_app/data/app_config_repository.dart';
 import 'package:farm_market_app/data/implementations/firebase_database.dart';
+import 'package:farm_market_app/data/implementations/google_maps_geolocator.dart';
 import 'package:farm_market_app/screens/create_order/blocs/create_order_bloc/create_order_bloc.dart';
+import 'package:farm_market_app/screens/create_order/blocs/delivery_address_autocomplete_bloc/delivery_address_autocomplete_bloc.dart';
 import 'package:farm_market_app/screens/create_order/widgets/create_order_appbar.dart';
 import 'package:farm_market_app/screens/create_order/widgets/create_order_button.dart';
 import 'package:farm_market_app/screens/create_order/widgets/form_fields/comment_field.dart';
@@ -60,8 +62,17 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CreateOrderBloc(database: FirebaseDatabase()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => CreateOrderBloc(database: FirebaseDatabase()),
+        ),
+        BlocProvider(
+          create: (context) => DeliveryAddressAutocompleteBloc(
+            GoogleMapsLocator(),
+          ),
+        ),
+      ],
       child: Scaffold(
         body: BackgroundGradient(
           child: BlocListener<CreateOrderBloc, CreateOrderState>(
@@ -102,7 +113,6 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
                                         _isDeliveryType
                                             ? DeliveryAddressField(
                                                 controller: _addressController,
-                                                cityData: city,
                                                 focusNode: _addressFocus,
                                                 nextField: _phoneFocus,
                                               )

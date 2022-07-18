@@ -50,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Не удалось загрузить картинку"),
         "input_error_text":
             MessageLookupByLibrary.simpleMessage("Введите данные"),
+        "invalid_location_name_error_text":
+            MessageLookupByLibrary.simpleMessage("Ошибка данных"),
         "item_composition": MessageLookupByLibrary.simpleMessage("Состав"),
         "item_description": MessageLookupByLibrary.simpleMessage("Описание"),
         "item_error_text": MessageLookupByLibrary.simpleMessage(
@@ -65,6 +67,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Нет картинки"),
         "no_items_available": MessageLookupByLibrary.simpleMessage(
             "В данной категории пока нет товаров"),
+        "no_location_selected_error_text": MessageLookupByLibrary.simpleMessage(
+            "Выберите адрес из предложенных"),
+        "no_locations_error_text":
+            MessageLookupByLibrary.simpleMessage("Не удалось найти адрес"),
         "no_map_error_text": MessageLookupByLibrary.simpleMessage(
             "Доступных карт не обнаружено"),
         "no_name": MessageLookupByLibrary.simpleMessage("Без названия"),
@@ -85,6 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Proin et"),
         "select_delivery_type": MessageLookupByLibrary.simpleMessage(
             "Как вы хотите получить заказ?"),
+        "start_enter_text_tip":
+            MessageLookupByLibrary.simpleMessage("Начните вводить адрес"),
         "summ_price": MessageLookupByLibrary.simpleMessage("Сумма"),
         "task_error_text":
             MessageLookupByLibrary.simpleMessage("Не удалось выполнить запрос")

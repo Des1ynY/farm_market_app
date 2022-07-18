@@ -320,6 +320,16 @@ class S {
     );
   }
 
+  /// `Начните вводить адрес`
+  String get start_enter_text_tip {
+    return Intl.message(
+      'Начните вводить адрес',
+      name: 'start_enter_text_tip',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Обновить`
   String get refresh_button_text {
     return Intl.message(
@@ -415,6 +425,36 @@ class S {
     return Intl.message(
       'Не удалось загрузить картинку',
       name: 'image_error_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Не удалось найти адрес`
+  String get no_locations_error_text {
+    return Intl.message(
+      'Не удалось найти адрес',
+      name: 'no_locations_error_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ошибка данных`
+  String get invalid_location_name_error_text {
+    return Intl.message(
+      'Ошибка данных',
+      name: 'invalid_location_name_error_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выберите адрес из предложенных`
+  String get no_location_selected_error_text {
+    return Intl.message(
+      'Выберите адрес из предложенных',
+      name: 'no_location_selected_error_text',
       desc: '',
       args: [],
     );
