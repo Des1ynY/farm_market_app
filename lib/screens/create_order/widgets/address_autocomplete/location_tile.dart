@@ -17,7 +17,10 @@ class AutocompleteLocationTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => _onTap(context),
-      child: Text(buttonText),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 2),
+        child: Text(buttonText),
+      ),
     );
   }
 

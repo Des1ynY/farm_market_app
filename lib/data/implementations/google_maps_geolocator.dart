@@ -38,7 +38,11 @@ class GoogleMapsLocator extends IGeolocator {
         },
       );
       final body = response.data as Map<String, dynamic>;
+
+      if (body['status'] != 'OK') throw Exception('Request exception');
+
       final predictions = body['predictions'] as List;
+
       final locations = predictions
           .map((e) => LocationModel.fromJson(e as Map<String, dynamic>));
 

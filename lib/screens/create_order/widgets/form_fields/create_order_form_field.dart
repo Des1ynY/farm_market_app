@@ -10,6 +10,7 @@ class CreateOrderFormField extends StatelessWidget {
     this.textCapitalization,
     this.validator,
     this.onFieldSubmitted,
+    this.onEditingComplete,
     this.onTap,
     this.onChanged,
     Key? key,
@@ -22,6 +23,7 @@ class CreateOrderFormField extends StatelessWidget {
   final TextCapitalization? textCapitalization;
   final String? Function(String?)? validator;
   final void Function(String?)? onFieldSubmitted;
+  final VoidCallback? onEditingComplete;
   final VoidCallback? onTap;
   final void Function(String?)? onChanged;
 
@@ -72,6 +74,7 @@ class CreateOrderFormField extends StatelessWidget {
           onChanged: onChanged,
           validator: validator,
           onFieldSubmitted: onFieldSubmitted,
+          onEditingComplete: onEditingComplete,
         ),
       ],
     );

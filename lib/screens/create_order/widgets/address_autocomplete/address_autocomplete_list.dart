@@ -19,7 +19,7 @@ class AddressAutocompleteList extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.symmetric(vertical: 25),
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: ColorsTheme.stokeColor, width: 1),
@@ -46,7 +46,10 @@ class AddressAutocompleteList extends StatelessWidget {
                 );
               }
               return ConstrainedBox(
-                constraints: const BoxConstraints(maxHeight: 300),
+                constraints: const BoxConstraints(
+                  minHeight: 100,
+                  maxHeight: 250,
+                ),
                 child: ListView(
                   children: locations
                       .map(

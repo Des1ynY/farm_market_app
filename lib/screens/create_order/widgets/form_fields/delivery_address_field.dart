@@ -36,6 +36,7 @@ class _DeliveryAddressFieldState extends State<DeliveryAddressField> {
           onTap: _onTap,
           onChanged: _onChange,
           validator: _validator,
+          onEditingComplete: _onEditingComplete,
           onFieldSubmitted: _onFieldSubmitted,
         ),
         if (isEditing)
@@ -79,8 +80,14 @@ class _DeliveryAddressFieldState extends State<DeliveryAddressField> {
     return editedValue.isEmpty ? S.of(context).input_error_text : null;
   }
 
-  void _onFieldSubmitted(String? value) {
+  void _onEditingComplete() {
     setState(() => isEditing = false);
+
+    if (!isSelectedAddress) widget.controller.clear();
+  }
+
+  void _onFieldSubmitted(String? value) {
+    _onEditingComplete();
     FocusScope.of(context).requestFocus(widget.nextField);
   }
 }
