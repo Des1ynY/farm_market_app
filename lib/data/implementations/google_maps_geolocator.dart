@@ -21,6 +21,8 @@ class GoogleMapsLocator extends IGeolocator {
     }
   }
 
+  static const goodStatuses = ['OK', 'ZERO_RESULTS'];
+
   @override
   Future<List<LocationModel>> autocompleteLocation(String input) async {
     try {
@@ -39,7 +41,9 @@ class GoogleMapsLocator extends IGeolocator {
       );
       final body = response.data as Map<String, dynamic>;
 
-      if (body['status'] != 'OK') throw Exception('Request exception');
+      if (!goodStatuses.contains(body['status'])) {
+        throw Exception('Request exception');
+      }
 
       final predictions = body['predictions'] as List;
 

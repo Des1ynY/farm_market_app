@@ -13,6 +13,8 @@ class CreateOrderFormField extends StatelessWidget {
     this.onEditingComplete,
     this.onTap,
     this.onChanged,
+    this.maxLines,
+    this.minLines,
     Key? key,
   }) : super(key: key);
 
@@ -21,6 +23,8 @@ class CreateOrderFormField extends StatelessWidget {
   final FocusNode focusNode;
   final TextInputType? keyboardType;
   final TextCapitalization? textCapitalization;
+  final int? maxLines;
+  final int? minLines;
   final String? Function(String?)? validator;
   final void Function(String?)? onFieldSubmitted;
   final VoidCallback? onEditingComplete;
@@ -35,6 +39,7 @@ class CreateOrderFormField extends StatelessWidget {
         Text(label, style: Theme.of(context).textTheme.labelTextStyle),
         const SizedBox(height: 2),
         TextFormField(
+          key: key,
           controller: controller,
           focusNode: focusNode,
           decoration: InputDecoration(
@@ -63,11 +68,20 @@ class CreateOrderFormField extends StatelessWidget {
                 width: 1,
               ),
             ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(kDefaultButtonBorderRadius),
+              borderSide: const BorderSide(
+                color: ColorsTheme.badgeColor,
+                width: 1,
+              ),
+            ),
             filled: true,
             fillColor: Colors.white,
           ),
           cursorColor: ColorsTheme.buttonDefaultColor,
           cursorWidth: 1.5,
+          minLines: minLines,
+          maxLines: maxLines,
           keyboardType: keyboardType ?? TextInputType.text,
           textCapitalization: textCapitalization ?? TextCapitalization.none,
           onTap: onTap,

@@ -18,7 +18,8 @@ class AddressAutocompleteList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      margin: const EdgeInsets.symmetric(vertical: 25),
+      constraints: const BoxConstraints(maxHeight: 250),
+      margin: const EdgeInsets.only(top: 25),
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -45,21 +46,17 @@ class AddressAutocompleteList extends StatelessWidget {
                   textAlign: TextAlign.center,
                 );
               }
-              return ConstrainedBox(
-                constraints: const BoxConstraints(
-                  minHeight: 100,
-                  maxHeight: 250,
-                ),
-                child: ListView(
-                  children: locations
-                      .map(
-                        (location) => AutocompleteLocationTile(
-                          location: location,
-                          onSelected: onLocationSelected,
-                        ),
-                      )
-                      .toList(),
-                ),
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: locations
+                    .map(
+                      (location) => AutocompleteLocationTile(
+                        location: location,
+                        onSelected: onLocationSelected,
+                      ),
+                    )
+                    .toList(),
               );
             },
           );

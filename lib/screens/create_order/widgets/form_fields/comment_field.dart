@@ -18,6 +18,9 @@ class CommentField extends StatelessWidget {
       label: S.of(context).enter_comment,
       controller: controller,
       focusNode: focusNode,
+      keyboardType: TextInputType.multiline,
+      minLines: 1,
+      maxLines: 5,
       textCapitalization: TextCapitalization.sentences,
     );
   }

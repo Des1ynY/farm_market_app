@@ -10,12 +10,14 @@ class DeliveryAddressField extends StatefulWidget {
     required this.controller,
     required this.focusNode,
     required this.nextField,
+    // required this.fieldKey,
     Key? key,
   }) : super(key: key);
 
   final TextEditingController controller;
   final FocusNode focusNode;
   final FocusNode nextField;
+  //final GlobalKey<FormFieldState> fieldKey;
 
   @override
   State<DeliveryAddressField> createState() => _DeliveryAddressFieldState();
@@ -30,6 +32,7 @@ class _DeliveryAddressFieldState extends State<DeliveryAddressField> {
     return Column(
       children: [
         CreateOrderFormField(
+          //key: widget.fieldKey,
           label: '${S.of(context).enter_address}*',
           controller: widget.controller,
           focusNode: widget.focusNode,
@@ -50,6 +53,9 @@ class _DeliveryAddressFieldState extends State<DeliveryAddressField> {
       isSelectedAddress = true;
       isEditing = false;
     });
+
+    //widget.fieldKey.currentState?.validate();
+
     FocusScope.of(context).requestFocus(widget.nextField);
   }
 
@@ -83,11 +89,12 @@ class _DeliveryAddressFieldState extends State<DeliveryAddressField> {
   void _onEditingComplete() {
     setState(() => isEditing = false);
 
-    if (!isSelectedAddress) widget.controller.clear();
+    //widget.fieldKey.currentState?.validate();
   }
 
   void _onFieldSubmitted(String? value) {
     _onEditingComplete();
+
     FocusScope.of(context).requestFocus(widget.nextField);
   }
 }
