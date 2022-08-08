@@ -4,14 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomBackButton extends StatelessWidget {
-  const CustomBackButton({Key? key}) : super(key: key);
+  const CustomBackButton({this.onTap, Key? key}) : super(key: key);
+
+  final VoidCallback? onTap;
 
   static const _backIcon = 'assets/icons/back.svg';
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _onTap(context),
+      onTap: onTap ?? () => context.router.pop(),
       child: Container(
         width: kBackButtonSize,
         height: kBackButtonSize,
@@ -25,9 +27,5 @@ class CustomBackButton extends StatelessWidget {
         child: SvgPicture.asset(_backIcon),
       ),
     );
-  }
-
-  void _onTap(BuildContext context) {
-    context.router.pop();
   }
 }
