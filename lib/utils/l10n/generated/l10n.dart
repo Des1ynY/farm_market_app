@@ -330,6 +330,16 @@ class S {
     );
   }
 
+  /// `Выбрать`
+  String get select_button_text {
+    return Intl.message(
+      'Выбрать',
+      name: 'select_button_text',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Обновить`
   String get refresh_button_text {
     return Intl.message(

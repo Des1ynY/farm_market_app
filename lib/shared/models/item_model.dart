@@ -12,6 +12,7 @@ class ItemModel with _$ItemModel {
     @JsonKey(name: 'title') String? name,
     String? description,
     String? category,
+    @JsonKey(name: 'list_of_categories') List<String>? categories,
     String? composition,
     @JsonKey(name: 'list_of_images') List<String>? images,
     List<PriceModel>? prices,

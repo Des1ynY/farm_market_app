@@ -25,6 +25,8 @@ mixin _$ItemModel {
   String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
+  @JsonKey(name: 'list_of_categories')
+  List<String>? get categories => throw _privateConstructorUsedError;
   String? get composition => throw _privateConstructorUsedError;
   @JsonKey(name: 'list_of_images')
   List<String>? get images => throw _privateConstructorUsedError;
@@ -45,6 +47,7 @@ abstract class $ItemModelCopyWith<$Res> {
       @JsonKey(name: 'title') String? name,
       String? description,
       String? category,
+      @JsonKey(name: 'list_of_categories') List<String>? categories,
       String? composition,
       @JsonKey(name: 'list_of_images') List<String>? images,
       List<PriceModel>? prices});
@@ -64,6 +67,7 @@ class _$ItemModelCopyWithImpl<$Res> implements $ItemModelCopyWith<$Res> {
     Object? name = freezed,
     Object? description = freezed,
     Object? category = freezed,
+    Object? categories = freezed,
     Object? composition = freezed,
     Object? images = freezed,
     Object? prices = freezed,
@@ -85,6 +89,10 @@ class _$ItemModelCopyWithImpl<$Res> implements $ItemModelCopyWith<$Res> {
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String?,
+      categories: categories == freezed
+          ? _value.categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       composition: composition == freezed
           ? _value.composition
           : composition // ignore: cast_nullable_to_non_nullable
@@ -112,6 +120,7 @@ abstract class _$$_ItemModelCopyWith<$Res> implements $ItemModelCopyWith<$Res> {
       @JsonKey(name: 'title') String? name,
       String? description,
       String? category,
+      @JsonKey(name: 'list_of_categories') List<String>? categories,
       String? composition,
       @JsonKey(name: 'list_of_images') List<String>? images,
       List<PriceModel>? prices});
@@ -133,6 +142,7 @@ class __$$_ItemModelCopyWithImpl<$Res> extends _$ItemModelCopyWithImpl<$Res>
     Object? name = freezed,
     Object? description = freezed,
     Object? category = freezed,
+    Object? categories = freezed,
     Object? composition = freezed,
     Object? images = freezed,
     Object? prices = freezed,
@@ -154,6 +164,10 @@ class __$$_ItemModelCopyWithImpl<$Res> extends _$ItemModelCopyWithImpl<$Res>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String?,
+      categories == freezed
+          ? _value._categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       composition == freezed
           ? _value.composition
           : composition // ignore: cast_nullable_to_non_nullable
@@ -178,10 +192,12 @@ class _$_ItemModel implements _ItemModel {
       @JsonKey(name: 'title') this.name,
       this.description,
       this.category,
+      @JsonKey(name: 'list_of_categories') final List<String>? categories,
       this.composition,
       @JsonKey(name: 'list_of_images') final List<String>? images,
       final List<PriceModel>? prices)
-      : _images = images,
+      : _categories = categories,
+        _images = images,
         _prices = prices;
 
   factory _$_ItemModel.fromJson(Map<String, dynamic> json) =>
@@ -196,6 +212,16 @@ class _$_ItemModel implements _ItemModel {
   final String? description;
   @override
   final String? category;
+  final List<String>? _categories;
+  @override
+  @JsonKey(name: 'list_of_categories')
+  List<String>? get categories {
+    final value = _categories;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? composition;
   final List<String>? _images;
@@ -219,7 +245,7 @@ class _$_ItemModel implements _ItemModel {
 
   @override
   String toString() {
-    return 'ItemModel(uid: $uid, name: $name, description: $description, category: $category, composition: $composition, images: $images, prices: $prices)';
+    return 'ItemModel(uid: $uid, name: $name, description: $description, category: $category, categories: $categories, composition: $composition, images: $images, prices: $prices)';
   }
 
   @override
@@ -232,6 +258,8 @@ class _$_ItemModel implements _ItemModel {
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.category, category) &&
+            const DeepCollectionEquality()
+                .equals(other._categories, _categories) &&
             const DeepCollectionEquality()
                 .equals(other.composition, composition) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
@@ -246,6 +274,7 @@ class _$_ItemModel implements _ItemModel {
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(category),
+      const DeepCollectionEquality().hash(_categories),
       const DeepCollectionEquality().hash(composition),
       const DeepCollectionEquality().hash(_images),
       const DeepCollectionEquality().hash(_prices));
@@ -267,6 +296,7 @@ abstract class _ItemModel implements ItemModel {
       @JsonKey(name: 'title') final String? name,
       final String? description,
       final String? category,
+      @JsonKey(name: 'list_of_categories') final List<String>? categories,
       final String? composition,
       @JsonKey(name: 'list_of_images') final List<String>? images,
       final List<PriceModel>? prices) = _$_ItemModel;
@@ -283,6 +313,9 @@ abstract class _ItemModel implements ItemModel {
   String? get description => throw _privateConstructorUsedError;
   @override
   String? get category => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'list_of_categories')
+  List<String>? get categories => throw _privateConstructorUsedError;
   @override
   String? get composition => throw _privateConstructorUsedError;
   @override

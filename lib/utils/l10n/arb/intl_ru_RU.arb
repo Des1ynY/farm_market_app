@@ -1,4 +1,5 @@
 {
+    "@@locale": "ru_RU",
     "onboarding_heading_text": "Добро пожаловать",
     "onboarding_text": "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Proin et",
     "select_city_text": "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Proin et",
@@ -27,6 +28,7 @@
     "enter_phone": "Укажите контактный номер",
     "enter_comment": "Комментарий",
     "start_enter_text_tip": "Начните вводить адрес",
+    "select_button_text": "Выбрать",
     "refresh_button_text": "Обновить",
     "next_button_text": "Далее",
     "add_to_cart_button_text": "В корзину",

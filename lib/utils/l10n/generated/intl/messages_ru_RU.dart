@@ -87,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "refresh_button_text": MessageLookupByLibrary.simpleMessage("Обновить"),
         "restore_filters_button_text":
             MessageLookupByLibrary.simpleMessage("Сбросить фильтр"),
+        "select_button_text": MessageLookupByLibrary.simpleMessage("Выбрать"),
         "select_city_text": MessageLookupByLibrary.simpleMessage(
             "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit. Proin et"),
         "select_delivery_type": MessageLookupByLibrary.simpleMessage(

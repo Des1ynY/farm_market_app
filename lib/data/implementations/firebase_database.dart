@@ -21,7 +21,7 @@ class FirebaseDatabase extends IDatabase {
     if (parentCategoryId != null) {
       query = await _db
           .collection(_category)
-          .where('parent', isEqualTo: '/$_category/$parentCategoryId')
+          .where('parent', isEqualTo: parentCategoryId)
           .get();
       for (var doc in query.docs) {
         final category = CategoryModel.fromJson(doc.data());
@@ -63,7 +63,7 @@ class FirebaseDatabase extends IDatabase {
     if (categoryId != null) {
       query = await _db
           .collection(_items)
-          .where('category', isEqualTo: '/$_category/$categoryId')
+          .where('list_of_categories', arrayContains: categoryId)
           .get();
     } else {
       query = await _db.collection(_items).get();

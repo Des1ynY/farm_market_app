@@ -11,6 +11,9 @@ _$_ItemModel _$$_ItemModelFromJson(Map<String, dynamic> json) => _$_ItemModel(
       json['title'] as String?,
       json['description'] as String?,
       json['category'] as String?,
+      (json['list_of_categories'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       json['composition'] as String?,
       (json['list_of_images'] as List<dynamic>?)
           ?.map((e) => e as String)
@@ -26,6 +29,7 @@ Map<String, dynamic> _$$_ItemModelToJson(_$_ItemModel instance) =>
       'title': instance.name,
       'description': instance.description,
       'category': instance.category,
+      'list_of_categories': instance.categories,
       'composition': instance.composition,
       'list_of_images': instance.images,
       'prices': instance.prices,

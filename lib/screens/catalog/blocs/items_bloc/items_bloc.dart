@@ -11,7 +11,6 @@ part 'items_bloc.freezed.dart';
 class ItemsBloc extends Bloc<ItemsEvent, ItemsState> {
   ItemsBloc({required this.database}) : super(const _Initial()) {
     on<_LoadData>(_loadData);
-    // on<_Refresh>(_refresh);
   }
 
   final IDatabase database;
@@ -28,18 +27,6 @@ class ItemsBloc extends Bloc<ItemsEvent, ItemsState> {
       emit(const ItemsState.error());
     }
   }
-
-  // void _refresh(_Refresh event, Emitter<ItemsState> emit) async {
-  //   emit(const ItemsState.loading());
-  //   try {
-  //     final lastCategory = ItemsState.lastSelectedCategory?.lastOrNull;
-  //     final items = await database.getItems(categoryId: lastCategory?.uid);
-  //     emit(ItemsState.loaded(items, ItemsState.lastSelectedCategory));
-  //   } on Object catch (error, stackTrace) {
-  //     addError(error, stackTrace);
-  //     emit(const ItemsState.error());
-  //   }
-  // }
 }
 
 extension<T> on List<T> {
