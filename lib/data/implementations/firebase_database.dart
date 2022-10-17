@@ -104,8 +104,17 @@ class FirebaseDatabase extends IDatabase {
 
       if (item.category == null) return MapEntry(item, null);
 
+      CategoryModel? category;
       final categoryId = item.category!.split('/').last;
-      final category = await getCategoryById(categoryId: categoryId);
+      final categoryDoc = await _db.collection(_category).doc(categoryId).get();
+
+      if (!categoryDoc.exists) {
+        return MapEntry(item, null);
+      }
+
+      category = CategoryModel.fromJson(categoryDoc.data()!).copyWith(
+        uid: categoryId,
+      );
 
       return MapEntry(item, category);
     } on Object {

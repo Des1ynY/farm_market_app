@@ -51,7 +51,7 @@ class CartItemListTile extends StatelessWidget {
               children: [
                 Expanded(
                   child: GestureDetector(
-                    onTap: () => _onTilePressed(context, item, category!),
+                    onTap: () => _onTilePressed(context, item, category),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -100,7 +100,7 @@ class CartItemListTile extends StatelessWidget {
   void _onTilePressed(
     BuildContext context,
     ItemModel item,
-    CategoryModel category,
+    CategoryModel? category,
   ) {
     context.router.push(ItemOverviewRoute(item: item, itemCategory: category));
   }
